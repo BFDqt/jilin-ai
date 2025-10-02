@@ -1,34 +1,66 @@
 {% extends "layout.html" %}
   
 {% block title %}Notebook{% endblock %}
-{% block lead %}This serves as a chronological record of your team's progress throughout the season. It documents your daily activities, experiments, discussions, and decisions.{% endblock %}
+{% block lead %}Our journey has been one of constant iteration and discovery - documenting every step from brainstorming to breakthrough.{% endblock %}
 
 {% block page_content %}
 
 <div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>What Should this Page Contain?</h2>
+  <div class="col">
+    <h2>Project Notebook</h2>
+    <hr />
+    <p>Our journey has been one of constant iteration and discovery. We have meticulously documented every step of our process, from initial brainstorming sessions and literature reviews to the final lines of code that brought BIOMNIGEM to life. Our project notebook contains detailed records of our experimental designs, model training logs, hyperparameter tuning, and team meetings.</p>
+    
+    <p>We believe in the power of transparency and reproducibility. We invite you to explore our notebook to gain a deeper understanding of our scientific process, the challenges we faced, and the breakthroughs we achieved along the way.</p>
+    
+    <div class="alert alert-info mt-4">
+      <h5><i class="fas fa-book"></i> Complete Documentation Available</h5>
+      <p>Our comprehensive project notebook includes:</p>
+      <ul>
+        <li>Daily progress logs and team meeting minutes</li>
+        <li>Model architecture design iterations</li>
+        <li>Training experiment logs with hyperparameter optimization</li>
+        <li>Performance benchmarking results and analysis</li>
+        <li>Code development history and version control</li>
+        <li>Literature review summaries and research insights</li>
+      </ul>
+      <p><strong>Link to detailed project notebook:</strong> <a href="#" class="btn btn-outline-primary btn-sm">View Full Notebook</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h3>Key Milestones</h3>
+    <hr />
+    <div class="timeline">
+      <div class="timeline-item">
+        <h5>Phase 1: Research & Design</h5>
+        <p><strong>Initial concept development</strong> - Literature review of multimodal AI approaches in biology</p>
+      </div>
+      <div class="timeline-item">
+        <h5>Phase 2: Architecture Development</h5>
+        <p><strong>Model architecture design</strong> - Designing the three-stage training pipeline</p>
+      </div>
+      <div class="timeline-item">
+        <h5>Phase 3: Implementation</h5>
+        <p><strong>Model training and optimization</strong> - Supervised fine-tuning and reinforcement learning</p>
+      </div>
+      <div class="timeline-item">
+        <h5>Phase 4: Validation</h5>
+        <p><strong>Performance testing</strong> - Benchmarking against commercial models</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <h3>Documentation Approach</h3>
     <hr />
     <ul>
-      <li>Record all activities in chronological order, with each entry clearly dated.</li>
-      <li>Provide sufficient detail for each activity, including:</li>
-      <ul>
-        <li>Purpose of the activity.</li>
-        <li>Methods and procedures used.</li>
-        <li>Results obtained.</li>
-        <li>Observations and notes.</li>
-      </ul>
-      <li>Document all experiments, protocols, data analysis, meetings, brainstorming sessions, and other project-related activities.</li>
-      <li>Include photos, videos, and diagrams to illustrate your progress.</li>
-      <li>Indicate which team members participated in each activity.</li>
-    </ul>
-  </div>
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
-    <hr />
-    <ul> 
-      <li><a href="https://2024.igem.wiki/epfl/notebook">2024 EPFL</a></li>
-      <li><a href="https://2024.igem.wiki/ju-krakow/notebook">2024 JU-Krakow</a></li>
+      <li><strong>Comprehensive Logging:</strong> Every experiment, meeting, and decision documented with timestamps</li>
+      <li><strong>Reproducible Research:</strong> All code, configurations, and data processing steps recorded</li>
+      <li><strong>Collaborative Documentation:</strong> Team contributions tracked and acknowledged</li>
+      <li><strong>Version Control:</strong> Complete development history maintained through Git</li>
+      <li><strong>Open Science:</strong> Documentation available for community review and reproduction</li>
     </ul>
   </div>
 </div>

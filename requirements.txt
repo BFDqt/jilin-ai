@@ -1,0 +1,11 @@
+# Web framework
+Flask>=2.3.0
+
+# Static site generation
+Frozen-Flask>=0.18
+
+# Additional dependencies for web serving
+Werkzeug>=2.3.0
+
+# Optional: For better development experience
+python-dotenv>=1.0.0

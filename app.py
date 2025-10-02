@@ -6,8 +6,9 @@ from flask_frozen import Freezer
 
 
 template_folder = path.abspath('./wiki')
+static_folder = path.abspath('./static')
 
-app = Flask(__name__, template_folder=template_folder)
+app = Flask(__name__, template_folder=template_folder, static_folder=static_folder)
 #app.config['FREEZER_BASE_URL'] = environ.get('CI_PAGES_URL')
 app.config['FREEZER_DESTINATION'] = 'public'
 app.config['FREEZER_RELATIVE_URLS'] = True
@@ -30,6 +31,6 @@ def home():
 def pages(page):
     return render_template(str(Path('pages')) + '/' + page.lower() + '.html')
 
-# Main Function, Runs at http://0.0.0.0:8080
+# This is the main entry point. When you run this script, it starts the web server on port 8080.
 if __name__ == "__main__":
     app.run(port=8080)

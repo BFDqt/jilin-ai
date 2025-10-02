@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
   
 {% block title %}Software{% endblock %}
-{% block lead %}Software in iGEM should make synthetic biology based on standard parts easier, faster, better or more accessible to our community.{% endblock %}
+{% block lead %}BIOMNIGEM: Your Personal AI Biologist - Stop juggling dozens of separate tools. Start a conversation with your data.{% endblock %}
 
 {% block page_content %}
 
@@ -17,30 +17,142 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>What Should this Page Contain?</h2>
+  <div class="col">
+    <h2>BIOMNIGEM: Your Personal AI Biologist</h2>
     <hr />
-    <p>This page should aim to make your software accessible and understandable to a wide audience, supplementing the detailed technical documentation available on the repository.</p>
-    <ul>
-      <li>Provide a clear and concise overview of the software's purpose and functionality.</li>
-      <li>Use non-technical language to make it accessible to a broad audience.</li>
-      <li>Create step-by-step instructions on how to use the software.</li>
-      <li>Include screenshots and visual aids to guide users.</li>
-      <li>Explain how to integrate the software with other tools or platforms.</li>
-      <li>Explain the key design choices made during the software's development.</li>
-      <li>Discuss any trade-offs or compromises made during the design process.</li>
-      <li>Provide a high-level overview of the software's architecture.</li>
-      <li>Provide clear instructions on how to deploy and install the software.</li>
-      <li>Provide an overview of the software's API, if applicable.</li>
-    </ul>
+    <p>Stop juggling dozens of separate tools. Start a conversation with your data. The BIOMNIGEM platform is a user-friendly web application that puts the world's most advanced multimodal biological AI at your fingertips.</p>
   </div>
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>Unlock your research potential with our key features:</h2>
     <hr />
-    <ul>
-      <li><a href="https://2024.igem.wiki/vilnius-lithuania/software">2024 Vilnius-Lithuania</a></li>
-      <li><a href="https://2023.igem.wiki/fudan/software">2023 Fudan</a></li>
-    </ul>
+    
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-dna text-primary"></i> 🔬 True Multimodal Analysis</h5>
+            <p class="card-text">Upload your genomics, transcriptomics, or proteomics data, and watch as BIOMNIGEM instantly reveals the connections. Move seamlessly from a gene to its protein product to its role in a biological pathway, all within a single interface.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-brain text-success"></i> 🧠 Advanced Reasoning Engine</h5>
+            <p class="card-text">Go beyond simple predictions. Ask complex, open-ended questions in plain English. "What is the likely functional impact of this list of mutations?" or "Suggest a protein design to increase binding affinity to this target." BIOMNIGEM provides detailed, mechanistically-sound answers, showing its work with a "Biological Chain-of-Thought."</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-comments text-info"></i> 💬 Interactive & Iterative Dialogue</h5>
+            <p class="card-text">Discovery is a conversation. Our platform supports multi-turn dialogues, allowing you to refine your questions, explore alternative hypotheses, and dive deeper into your results in a natural, iterative way. It's a true collaborative partner for your research.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-6 mb-4">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-code text-warning"></i> 💻 Open and Extensible</h5>
+            <p class="card-text">Our entire framework is open-source. Download our pre-trained models, fine-tune them on your proprietary data for maximum performance, or integrate BIOMNIGEM into your own automated lab workflows via our API.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-8">
+    <h3>Getting Started</h3>
+    <hr />
+    
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Ready to accelerate your research?</h5>
+        <div class="d-flex gap-3 flex-wrap">
+          <a href="#" class="btn btn-primary btn-lg">
+            <i class="fas fa-play"></i> Live Demo
+          </a>
+          <a href="#" class="btn btn-outline-secondary btn-lg">
+            <i class="fab fa-github"></i> GitHub Repository
+          </a>
+          <a href="#" class="btn btn-outline-info btn-lg">
+            <i class="fas fa-book"></i> Documentation
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-4">
+    <h3>Quick Start Guide</h3>
+    <hr />
+    <ol>
+      <li><strong>Access the Platform:</strong> Visit our web interface or use the API</li>
+      <li><strong>Upload Your Data:</strong> Support for multiple biological data formats</li>
+      <li><strong>Ask Questions:</strong> Use natural language to query your data</li>
+      <li><strong>Explore Results:</strong> Follow the reasoning chain and iterate</li>
+      <li><strong>Download Insights:</strong> Export results for further analysis</li>
+    </ol>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Technical Specifications</h3>
+    <hr />
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Component</th>
+            <th>Technology</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Frontend</strong></td>
+            <td>React.js, Bootstrap</td>
+            <td>Responsive web interface with modern UX</td>
+          </tr>
+          <tr>
+            <td><strong>Backend</strong></td>
+            <td>Python, FastAPI</td>
+            <td>High-performance API with async support</td>
+          </tr>
+          <tr>
+            <td><strong>AI Model</strong></td>
+            <td>Qwen3-30B based</td>
+            <td>Multimodal biological language model</td>
+          </tr>
+          <tr>
+            <td><strong>Database</strong></td>
+            <td>PostgreSQL, Vector DB</td>
+            <td>Structured and vector data storage</td>
+          </tr>
+          <tr>
+            <td><strong>Deployment</strong></td>
+            <td>Docker, Kubernetes</td>
+            <td>Scalable containerized deployment</td>
+          </tr>
+          <tr>
+            <td><strong>License</strong></td>
+            <td>Apache 2.0</td>
+            <td>Open source with commercial use allowed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

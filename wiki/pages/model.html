@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
   
 {% block title %}Model{% endblock %}
-{% block lead %}Explain your model's assumptions, data, parameters, and results in a way that anyone could understand.{% endblock %}
+{% block lead %}The Architecture of BIOMNIGEM - A paradigm shift in biological AI through multimodal understanding.{% endblock %}
 
 {% block page_content %}
 
@@ -17,22 +17,232 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>Overview</h2>
+  <div class="col">
+    <h2>The Architecture of BIOMNIGEM</h2>
     <hr />
-    <p>Mathematical models and computer simulations provide a great way to describe the function and operation of Parts and Devices. Synthetic Biology is an engineering discipline, and part of engineering is simulation and modeling to determine the behavior of your design before you build it. Designing and simulating can be iterated many times in a computer before moving to the lab.</p>
+    <p>BIOMNIGEM represents a paradigm shift in biological AI. Its power comes from a carefully designed architecture and a sophisticated, multi-stage training process that imbues it with deep, cross-modal biological understanding.</p>
   </div>
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h3>1. Foundational Model</h3>
     <hr />
-    <ul>
-      <li><a href="https://2024.igem.wiki/utoronto/model">2024 UToronto</a></li>
-      <li><a href="https://2024.igem.wiki/heidelberg/model">2024 Heidelberg</a></li>
-      <li><a href="https://2024.igem.wiki/waseda-tokyo/model">2024 Waseda-Tokyo</a></li>
-      <li><a href="https://2024.igem.wiki/bnuzh-china/model">2024 BNUZH-China</a></li>
-      <li><a href="https://2024.igem.wiki/cjuh-jlu-china/model">2024 CJUH-JLU-China</a></li>
-      <li><a href="https://2024.igem.wiki/tsinghua/model">2024 Tsinghua</a></li>
-    </ul>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-microchip"></i> Qwen3-30B Base</h5>
+        <p class="card-text">The core of BIOMNIGEM is <strong>Qwen3-30B</strong>, a highly capable 30-billion parameter Large Language Model. We chose this model for its exceptional baseline performance in reasoning, language understanding, and its ability to be effectively fine-tuned for specialized domains.</p>
+        
+        <ul>
+          <li><strong>Parameters:</strong> 30 billion</li>
+          <li><strong>Architecture:</strong> Transformer-based decoder</li>
+          <li><strong>Strengths:</strong> Strong reasoning and language capabilities</li>
+          <li><strong>Optimization:</strong> Fine-tunable for domain specialization</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <div class="col-lg-6">
+    <h3>2. Multimodal Data Embedding</h3>
+    <hr />
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-database"></i> Unified Text Representation</h5>
+        <p class="card-text">The key innovation of BIOMNIGEM is its ability to process diverse biological data types within a unified framework. All data is first converted into a text-based representation that the LLM can natively understand:</p>
+        
+        <ul>
+          <li><strong>Gene Expression Profiles:</strong> Transformed into ranked "cell sentences"</li>
+          <li><strong>DNA and Protein Sequences:</strong> Treated as specialized text strings</li>
+          <li><strong>Graph Data:</strong> Linearized into descriptive text</li>
+          <li><strong>Interaction Networks:</strong> Converted to node-connection descriptions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>3. The Three-Stage Training Pipeline</h3>
+    <hr />
+    <p>We train BIOMNIGEM using a progressive, three-stage pipeline to build its knowledge and reasoning abilities from the ground up.</p>
+    
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card h-100">
+          <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-graduation-cap"></i> Stage 1: Supervised Fine-Tuning</h5>
+          </div>
+          <div class="card-body">
+            <h6>Foundation Building</h6>
+            <p>We fine-tuned the base Qwen3 model on a curated corpus containing:</p>
+            <ul>
+              <li>Biological textbooks and papers</li>
+              <li>Structured task datasets</li>
+              <li>High-quality input-output pairs</li>
+              <li>GPT-4o generated labels (filtered)</li>
+            </ul>
+            <p><strong>Goal:</strong> Foundational biological knowledge</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="card h-100">
+          <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fas fa-bullseye"></i> Stage 2: RL for Performance</h5>
+          </div>
+          <div class="card-body">
+            <h6>Task Optimization</h6>
+            <p>Using GRPO (Ghost Reward Policy Optimization) to optimize for:</p>
+            <ul>
+              <li>Classification accuracy</li>
+              <li>BioBERTScore for generation</li>
+              <li>Semantic similarity metrics</li>
+              <li>Domain-specific correctness</li>
+            </ul>
+            <p><strong>Goal:</strong> Enhanced predictive accuracy</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4">
+        <div class="card h-100">
+          <div class="card-header bg-warning text-white">
+            <h5 class="mb-0"><i class="fas fa-comments"></i> Stage 3: Dialogue Tuning</h5>
+          </div>
+          <div class="card-body">
+            <h6>Reasoning & Interaction</h6>
+            <p>Final GRPO training on:</p>
+            <ul>
+              <li>Multi-turn conversations</li>
+              <li>Open-ended questions</li>
+              <li>Chain-of-thought reasoning</li>
+              <li>Interactive dialogue patterns</li>
+            </ul>
+            <p><strong>Goal:</strong> Collaborative reasoning partner</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Model Architecture Diagram</h3>
+    <hr />
+    
+    <div class="card">
+      <div class="card-body text-center">
+        <div class="row align-items-center">
+          <div class="col-md-3">
+            <div class="border rounded p-3 mb-3">
+              <i class="fas fa-dna fa-2x text-primary mb-2"></i>
+              <h6>Multimodal Input</h6>
+              <small>DNA, RNA, Protein, Expression</small>
+            </div>
+          </div>
+          <div class="col-md-1 text-center">
+            <i class="fas fa-arrow-right fa-2x text-muted"></i>
+          </div>
+          <div class="col-md-3">
+            <div class="border rounded p-3 mb-3">
+              <i class="fas fa-language fa-2x text-success mb-2"></i>
+              <h6>Text Embedding</h6>
+              <small>Unified representation</small>
+            </div>
+          </div>
+          <div class="col-md-1 text-center">
+            <i class="fas fa-arrow-right fa-2x text-muted"></i>
+          </div>
+          <div class="col-md-4">
+            <div class="border rounded p-3 mb-3">
+              <i class="fas fa-brain fa-2x text-warning mb-2"></i>
+              <h6>BIOMNIGEM Model</h6>
+              <small>30B parameter reasoning engine</small>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row mt-3">
+          <div class="col text-center">
+            <i class="fas fa-arrow-down fa-2x text-muted"></i>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <i class="fas fa-chart-line fa-2x text-info mb-2"></i>
+              <h6>Predictions</h6>
+              <small>Quantitative outputs</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <i class="fas fa-lightbulb fa-2x text-danger mb-2"></i>
+              <h6>Explanations</h6>
+              <small>Chain-of-thought reasoning</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="border rounded p-3">
+              <i class="fas fa-comments fa-2x text-secondary mb-2"></i>
+              <h6>Dialogue</h6>
+              <small>Interactive responses</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Key Model Innovations</h3>
+    <hr />
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Innovation</th>
+            <th>Traditional Approach</th>
+            <th>BIOMNIGEM Approach</th>
+            <th>Advantage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Data Integration</strong></td>
+            <td>Separate models for each data type</td>
+            <td>Unified text-based representation</td>
+            <td>Cross-modal understanding</td>
+          </tr>
+          <tr>
+            <td><strong>Training Strategy</strong></td>
+            <td>Single-stage supervised learning</td>
+            <td>Three-stage progressive training</td>
+            <td>Robust knowledge building</td>
+          </tr>
+          <tr>
+            <td><strong>Reasoning</strong></td>
+            <td>Black-box predictions</td>
+            <td>Biological Chain-of-Thought</td>
+            <td>Transparent, explainable AI</td>
+          </tr>
+          <tr>
+            <td><strong>Interaction</strong></td>
+            <td>One-shot prediction</td>
+            <td>Multi-turn dialogue</td>
+            <td>Collaborative exploration</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

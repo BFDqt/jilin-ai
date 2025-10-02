@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../wiki_example"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "jilin-ai"
+	}
+}

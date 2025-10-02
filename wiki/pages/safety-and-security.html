@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
   
 {% block title %}Safety and Security{% endblock %}
-{% block lead %}Detail the safety and security considerations of your project, adressing potential risks and outlining the measures taken to mitigate them.{% endblock %}
+{% block lead %}Building a powerful AI tool for biology comes with great responsibility - our comprehensive approach to safety and security.{% endblock %}
 
 {% block page_content %}
 
@@ -17,37 +17,158 @@
 </div>
 
 <div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>What Should this Page Contain?</h2>
+  <div class="col">
+    <h2>Safety and Security Overview</h2>
     <hr />
-    <p>Describe all potential safety and security risks associated with your project, including:</p>
-    <ul>
-      <li>Biological risks (e.g., pathogenicity, toxicity, environmental impact).</li>
-      <li>Chemical risks (e.g., handling hazardous materials).</li>
-      <li>Physical risks (e.g., equipment safety).</li>
-      <li>Security risks (e.g., potential misuse of technology).</li>
-    </ul>
-    <p>Explain how you are addressing these risks and implementing safety measures.</p>
-    <p>Detail any safety features incorporated into your project design, such as:</p>
-    <ul>
-      <li>Choice of a non-pathogenic chassis.</li>
-      <li>Selection of parts that minimize harm to humans, animals, or plants;</li>
-      <li>Substitution of safer materials in experiments;</li>
-      <li>Implementation of "kill-switch" mechanisms or other safety controls.</li>
-    </ul>
-    <p>Explain the rationale behind these design choices.</p>
-    <div class="bd-callout bd-callout-info">
-      <p>Ensure that your project adheres to all safety requirements outlined in the <a href="https://responsibility.igem.org/safety-policies">Safety Policies page</a>.</p>
+    <p>Building a powerful AI tool for biology comes with a great responsibility. We have integrated safety and security considerations into every step of our project design and deployment.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h3>Project Safety and Responsible AI</h3>
+    <hr />
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-shield-alt"></i> Data Privacy and Ethics</h5>
+        <p class="card-text">All data used to train BIOMNIGEM was sourced from public, anonymized databases (e.g., the Protein Data Bank, Human Cell Atlas). We did not use any personally identifiable or sensitive patient information, ensuring our project adheres to the highest ethical standards.</p>
+      </div>
+    </div>
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-balance-scale"></i> Mitigating Bias</h5>
+        <p class="card-text">Biological datasets can contain inherent biases. We actively worked to curate a balanced training corpus and are continuously developing methods to audit our model for potential biases (e.g., over-representation of certain gene families) to ensure its predictions are fair and reliable.</p>
+      </div>
+    </div>
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-exclamation-triangle"></i> Preventing Misuse</h5>
+        <p class="card-text">While BIOMNIGEM is a tool for accelerating discovery, we recognize the dual-use potential of any powerful technology. Our model is designed as an <strong>assistant, not an autonomous agent</strong>. Its outputs are intended to be interpreted and validated by a human expert. The "Biological Chain-of-Thought" feature is a key part of this, as it makes the model's reasoning transparent and easier to scrutinize.</p>
+      </div>
     </div>
   </div>
-
-  <div class="col-lg-4">
-    <h2>Inspirations</h2>
+  
+  <div class="col-lg-6">
+    <h3>Security and Open Source Licensing</h3>
     <hr />
-    <ul>
-      <li><a href="https://2024.igem.wiki/ucalgary/safety">2024 UCalgary</a></li>
-      <li><a href="https://2023.igem.wiki/basis-china/safety">2023 BASIS-China</a></li>
-      <li><a href="https://2023.igem.wiki/edinburgh/safety">2023 Edinburgh</a></li>
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fas fa-lock"></i> Platform Security</h5>
+        <p class="card-text">Our web platform and APIs are built with modern security practices to protect against unauthorized access and ensure data integrity for our users.</p>
+        <ul>
+          <li>HTTPS encryption for all communications</li>
+          <li>Input validation and sanitization</li>
+          <li>Rate limiting to prevent abuse</li>
+          <li>Secure authentication mechanisms</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><i class="fab fa-osi"></i> Open Source with Confidence</h5>
+        <p class="card-text">We believe the best way to ensure safety and promote beneficial use is through transparency. BIOMNIGEM is released under the <strong>Apache 2.0 License</strong>. This is a permissive open-source license that allows anyone to freely use, modify, and distribute the software for any purpose, including commercial use.</p>
+        
+        <h6>What this means for you:</h6>
+        <ul>
+          <li>You can build on our work without restriction</li>
+          <li>Full access to source code for auditing and verification</li>
+          <li>Community-driven improvements and security patches</li>
+        </ul>
+        
+        <h6>Why we chose it:</h6>
+        <p>It encourages the widest possible adoption and collaboration, allowing the global scientific community to contribute to, and benefit from, a safer and more powerful tool.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Risk Assessment and Mitigation</h3>
+    <hr />
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Risk Category</th>
+            <th>Potential Risk</th>
+            <th>Mitigation Strategy</th>
+            <th>Implementation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Data Security</strong></td>
+            <td>Unauthorized access to training data or models</td>
+            <td>Secure infrastructure and access controls</td>
+            <td>Encrypted storage, authentication, audit logs</td>
+          </tr>
+          <tr>
+            <td><strong>Model Misuse</strong></td>
+            <td>Using AI predictions without proper validation</td>
+            <td>Transparent reasoning and human oversight requirements</td>
+            <td>Biological Chain-of-Thought, confidence scoring</td>
+          </tr>
+          <tr>
+            <td><strong>Bias and Fairness</strong></td>
+            <td>Biased predictions affecting research outcomes</td>
+            <td>Balanced training data and bias auditing</td>
+            <td>Diverse datasets, ongoing bias monitoring</td>
+          </tr>
+          <tr>
+            <td><strong>Dual-Use Concerns</strong></td>
+            <td>Potential application to harmful biological designs</td>
+            <td>Responsible AI principles and community oversight</td>
+            <td>Open source development, expert review</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Ethical AI Principles</h3>
+    <hr />
+    
+    <div class="row">
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-eye fa-3x mb-3 text-primary"></i>
+            <h5 class="card-title">Transparency</h5>
+            <p class="card-text">Open source code, clear documentation, and explainable AI outputs</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-users fa-3x mb-3 text-success"></i>
+            <h5 class="card-title">Human-Centered</h5>
+            <p class="card-text">AI as a collaborative tool, not a replacement for human expertise</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <i class="fas fa-check-circle fa-3x mb-3 text-warning"></i>
+            <h5 class="card-title">Reliability</h5>
+            <p class="card-text">Rigorous testing, validation, and continuous improvement</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
       <li><a href="https://2023.igem.wiki/epfl/safety">2023 EPFL</a></li>
       <li><a href="https://2023.igem.wiki/nmu-china/safety">2023 NMU-China</a></li>
     </ul>

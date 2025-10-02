@@ -1,67 +1,1271 @@
 {% extends "layout.html" %}
 
 {% block title %}Home{% endblock %}
-{% block lead %}<b>Your iGEM Journey Begins Here!</b> We wish you a successful and rewarding season!{% endblock %}
+{% block lead %}In the beginning, there was the Word.{% endblock %}
 
-{% block page_content %}
+{% block home_content %}
+<style>
+  /* Override body styles for full-screen experience */
+  body {
+    min-height: 100vh;
+    background: linear-gradient(
+      135deg,
+      #0a0a2a 0%,
+      #1a1a4a 50%,
+      #2a0a4a 100%
+    ) !important;
+    color: #fff !important;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+    overflow-x: hidden;
+  }
+  .destiny-bg {
+    background: rgba(30, 41, 59, 0.96);
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.15);
+    padding: 3rem 2rem;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    perspective: 1000px;
+  }
+  .story-block.center {
+    padding: 2rem 2rem 2rem 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+    max-width: 800px;
+  }
+  #parallel-stories {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .gradient-text {
+    font-family: 'Inter' !important;
+    background: linear-gradient(90deg, #a5f3fc 0%, #c4b5fd 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  h1.gradient-text {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    line-height: 1.5 !important;
+    letter-spacing: 0.02em;
+  }
+  h2.gradient-text {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.22 !important;
+    letter-spacing: 0.01em;
+  }
+  .story-block {
+    font-family: "Merriweather", serif;
+    font-size: 1.22rem;
+    line-height: 1.85 !important;
+    letter-spacing: 0.02em;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
+    transition: all 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+    margin-bottom: 10rem;
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .story-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .story-block.left {
+    padding: 2rem 1rem 2rem 2.5rem;
+    margin-left: 40px;
+    margin-right: 0;
+    align-self: flex-start;
+  }
+  .story-block.right {
+    padding: 2rem 2.5rem 2rem 1rem;
+    margin-right: 40px;
+    margin-left: 0;
+    align-self: flex-end;
+  }
+  .story-block.left,
+  .story-block.right {
+    max-width: 800px;
+  }
+  #merged-stories {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .feature-icon.blue {
+    color: #60a5fa;
+  }
+  .feature-icon.purple {
+    color: #c084fc;
+  }
+  .clue-line {
+    font-family: "Courier New", monospace;
+    position: fixed;
+    top: 0;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+    opacity: 0.7;
+    z-index: 1;
+    font-size: 1.2rem;
+    pointer-events: none;
+    transition: all 0.5s ease;
+  }
+  .clue-line.bent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    writing-mode: initial;
+    text-orientation: initial;
+  }
+  .clue-line.bent.right {
+    align-items: flex-end;
+  }
+  .clue-line .vertical-part {
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    white-space: nowrap;
+  }
+  .clue-line .horizontal-part {
+    writing-mode: horizontal-tb;
+    margin-top: -2px;
+    margin-left: 0.5em;
+    white-space: nowrap;
+    letter-spacing: 3px !important;
+  }
+  .clue-line.right .horizontal-part {
+    margin-left: 0;
+    margin-right: 0.3em;
+    letter-spacing: 3px !important;
+  }
+  .clue-line.left {
+    left: 50px;
+    color: #60a5fa;
+    text-shadow: 0 0 10px #3b82f6;
+  }
+  .clue-line.right {
+    right: 50px;
+    color: #c084fc;
+    text-shadow: 0 0 10px #8b5cf6;
+  }
+  .clue-line.merge.left {
+    left: calc(50% - 40px);
+  }
+  .clue-line.merge.right {
+    right: calc(50% - 40px);
+  }
+  .blink-slow {
+    animation: clueBlink 2s infinite;
+  }
+  .blink-fast {
+    animation: clueBlinkFast 1s infinite;
+  }
+  @keyframes clueBlink {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+  @keyframes clueBlinkFast {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+  }
+  .scroll-indicator {
+    animation: bounce 2s infinite;
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+    z-index: 10;
+  }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px); }
+    60% { transform: translateY(-10px); }
+  }
+  .shadow-blue {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  }
+  .shadow-purple {
+    box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+  }
+  .shadow-indigo {
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+  }
+  .bg-gradient-btn {
+    background: linear-gradient(90deg, #2563eb 0%, #a21caf 100%);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.2);
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .bg-gradient-btn:hover {
+    background: linear-gradient(90deg, #1d4ed8 0%, #7c3aed 100%);
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
+  }
+  #dna-scene {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, 0);
+    width: 160px;
+    height: 3000px;
+    pointer-events: none;
+    z-index: 5;
+    overflow: visible;
+  }
+  .dna-char {
+    position: absolute;
+    font-family: monospace;
+    font-size: 20px;
+    color: cyan;
+    text-shadow: 0 0 10px cyan, 0 0 20px blue;
+    white-space: pre;
+    perspective: 1000px;
+  }
+  .dna-char.purple {
+    color: #c084fc;
+    text-shadow: 0 0 10px #c084fc, 0 0 20px #8b5cf6;
+  }
+  .product-intro-card {
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(30, 41, 59, 0.98) 0%, 
+      rgba(51, 65, 85, 0.95) 50%, 
+      rgba(30, 41, 59, 0.98) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+      0 20px 60px rgba(139, 92, 246, 0.3),
+      0 0 100px rgba(79, 172, 254, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: epicGlow 4s ease-in-out infinite alternate;
+    overflow: hidden;
+  }
+  .product-intro-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      #4facfe 0%, 
+      #00f2fe 25%, 
+      #a855f7 50%, 
+      #3b82f6 75%, 
+      #4facfe 100%);
+    border-radius: 1rem;
+    z-index: -1;
+    animation: borderFlow 6s linear infinite;
+  }
+  .product-intro-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.2) 50%, 
+      transparent 100%);
+    animation: shimmer 3s ease-in-out infinite;
+    z-index: 1;
+  }
+  .epic-title {
+    position: relative;
+    z-index: 2;
+    font-size: 3.5rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, 
+      #10497b 0%, 
+      #fbbf24 25%, 
+      #f5c856 50%, 
+      #60a5fa 75%, 
+      #a855f7 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: epicTextFlow 4s ease-in-out infinite;
+    text-shadow: 0 0 30px rgba(79, 172, 254, 0.4);
+    letter-spacing: 0.05em;
+    line-height: 1.2 !important;
+  }
+  .epic-subtitle {
+    position: relative;
+    z-index: 2;
+    font-size: 1.4rem !important;
+    color: #e2e8f0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    animation: subtitlePulse 2s ease-in-out infinite alternate;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+  }
+  @keyframes epicGlow {
+    0% {
+      box-shadow: 
+        0 20px 60px rgba(139, 92, 246, 0.3),
+        0 0 100px rgba(79, 172, 254, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    100% {
+      box-shadow: 
+        0 30px 80px rgba(139, 92, 246, 0.5),
+        0 0 150px rgba(79, 172, 254, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+  }
+  @keyframes borderFlow {
+    0% { background-position: 0% 0%; }
+    100% { background-position: 400% 400%; }
+  }
+  @keyframes shimmer {
+    0% { left: -100%; }
+    50% { left: -100%; }
+    100% { left: 100%; }
+  }
+  @keyframes epicTextFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  @keyframes subtitlePulse {
+    0% {
+      opacity: 0.8;
+      transform: translateY(0px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(-2px);
+    }
+  }
+  .floating-molecules {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .molecule {
+    position: absolute;
+    opacity: 0.1;
+    animation: moleculeFloat 15s infinite linear;
+  }
+  .molecule::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #60a5fa 0%, rgba(96, 165, 250, 0) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px #60a5fa;
+  }
+  .molecule::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #c084fc 0%, rgba(192, 132, 252, 0) 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 15px #c084fc;
+    top: 20px;
+    left: 15px;
+  }
+  .molecule.large::before {
+    width: 12px;
+    height: 12px;
+  }
+  .molecule.large::after {
+    width: 10px;
+    height: 10px;
+    top: 25px;
+    left: 20px;
+  }
+  @keyframes moleculeFloat {
+    0% {
+      transform: translateY(100vh) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10% { opacity: 0.1; }
+    90% { opacity: 0.1; }
+    100% {
+      transform: translateY(-100px) translateX(50px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  .starfield {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: starTwinkle 3s infinite alternate;
+  }
+  .star.small {
+    width: 1px;
+    height: 1px;
+    box-shadow: 0 0 3px rgba(255, 255, 255, 0.8);
+  }
+  .star.medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 6px rgba(165, 243, 252, 0.9);
+  }
+  .star.large {
+    width: 3px;
+    height: 3px;
+    box-shadow: 0 0 10px rgba(196, 181, 253, 1);
+  }
+  @keyframes starTwinkle {
+    0% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+  }
+  .neural-network {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .neural-node {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(96, 165, 250, 0) 70%);
+    border-radius: 50%;
+    animation: nodeGlow 4s infinite alternate;
+  }
+  .neural-node.purple {
+    background: radial-gradient(circle, rgba(192, 132, 252, 0.8) 0%, rgba(192, 132, 252, 0) 70%);
+  }
+  .neural-connection {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      rgba(96, 165, 250, 0) 0%, 
+      rgba(96, 165, 250, 0.3) 50%, 
+      rgba(96, 165, 250, 0) 100%);
+    transform-origin: left center;
+    animation: connectionPulse 6s infinite;
+  }
+  .neural-connection.purple {
+    background: linear-gradient(90deg, 
+      rgba(192, 132, 252, 0) 0%, 
+      rgba(192, 132, 252, 0.3) 50%, 
+      rgba(192, 132, 252, 0) 100%);
+  }
+  @keyframes nodeGlow {
+    0% {
+      opacity: 0.3;
+      transform: scale(1);
+      box-shadow: 0 0 5px rgba(96, 165, 250, 0.3);
+    }
+    100% {
+      opacity: 0.8;
+      transform: scale(1.5);
+      box-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
+    }
+  }
+  @keyframes connectionPulse {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 0.6; }
+  }
+</style>
 
-<div class="row">
-  <div class="col">
-    <h2>Essential First Steps</h2>
-    <hr />
-    <p>Familiarize yourself with the official iGEM competition rules, policies, and judging criteria:</p>
-    <ul>
-      <li>Carefully review the <a href="https://competition.igem.org/deliverables/team-wiki" target="_blank">Wiki Requirements page</a> to ensure your wiki meets all necessary standards for judging and awards.</li>
-      <li>Understand the criteria and required wiki pages for Gold, Silver, and Bronze Medals on the <a href="https://competition.igem.org/judging/medals" target="_blank">Medals page</a>.</li>
-      <li>Explore the various Project Prizes and their corresponding wiki requirements on the <a href="https://competition.igem.org/judging/project-prizes" target="_blank">Project Prizes Page</a>.</li>
-      <li>Discover the eligibility criteria and wiki requirements for Special Prizes on the <a href="https://competition.igem.org/judging/special-prizes" target="_blank">Special Prizes Page</a>.</li>
-    </ul>
+<!-- Background decorative elements -->
+<div class="starfield" id="starfield"></div>
+<div class="floating-molecules" id="floating-molecules"></div>
+<div class="neural-network" id="neural-network"></div>
+
+<!-- Top gradient and scroll prompt -->
+<div id="intro" class="position-fixed top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center bg-black" style="z-index: 1020">
+  <h1 class="gradient-text fw-bold display-4 mb-5" style="transition: opacity 1s">
+    <!-- In the beginning, there was the Word. -->
+    In the beginning was the Word.
+  </h1>
+  <div class="scroll-indicator text-center">
+    <i class="fas fa-chevron-down fa-2x mb-2"></i>
+    <div class="small">Scroll to explore</div>
   </div>
 </div>
-<div class="row mt-4">
-  <div class="col">
-    <h2>Building Your Wiki</h2>
-    <hr />
-    <ul>
-      <li><b>Content First, Design Second</b>: Focus on clearly documenting your project, research, and activities. Design can be refined later.</li>
-      <li><b>Navigation is Key</b>: Structure your wiki with clear and intuitive navigation. Visitors should easily find information.</li>
-      <li><b>Accessibility Matters</b>: Use readable fonts, appropriate color contrast, and ensure your wiki is mobile-friendly.</li>
-      <li><b>Media Optimization</b>: Compress images and videos to reduce file sizes and improve loading times.</li>
-      <li><b>Document Early & Often</b>: Start documenting your project from day one. Don't wait until the Wiki Freeze.</li>
-      <li><b>Prepare for Deadlines</b>: Stay up-to-date with important deadlines and events by checking the <a href="https://competition.igem.org/calendar" target="_blank">iGEM Competition Calendar</a>.</li>
-    </ul>
+
+<!-- Left and right clues -->
+<div class="clue-line left" id="binaryClue"></div>
+<div class="clue-line right" id="dnaClue"></div>
+
+<!-- Story introduction -->
+<section class="vh-100 d-flex align-items-center justify-content-center px-3">
+  <div class="text-center w-100" style="max-width: 1050px">
+    <h1 class="gradient-text fw-bold display-4 mb-3">
+    <!-- In the beginning, there was the Word. -->
+    In the beginning was the Word.
+    </h1>
+    <p class="text-secondary fs-5">(John 1:1-18)</p>
   </div>
-</div>
-<div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>Tips for Success</h2>
-    <hr />
-    <ul>
-      <li><b>Clearly Define Your Project</b>: Explain your project's goals, methodology, and expected outcomes in a clear and concise manner.</li>
-      <li><b>Show Your Progress</b>: Regularly update your wiki with your team's progress, experiments, and results.</li>
-      <li><b>Engage Your Audience</b>: Consider your global audience and use language that is accessible to everyone.</li>
-      <li><b>Human Practices & Safety</b>: Thoroughly document your team's human practices activities and safety considerations.</li>
-      <li><b>Collaborate & Share</b>: Highlight collaborations with other teams and institutions.</li>
-      <li><b>Have Fun and Learn!</b> iGEM is a unique opportunity to learn, grow, and contribute to synthetic biology.</li>
-    </ul>
+</section>
+
+<!-- Parallel story area -->
+<section class="py-5 position-relative" style="z-index: 2">
+  <div id="parallel-stories">
+    <div class="story-block left shadow-blue">
+      <p>
+        As early as <strong class="text-info">1966</strong>, we built <strong class="text-info">machines</strong> that followed <strong class="text-info">simple rules</strong>, like digital parrots mimicking conversation (<strong class="text-purple">ELIZA</strong>). They could <strong class="text-warning">repeat</strong>, but not <strong class="text-warning">comprehend</strong>.
+      </p>
+    </div>
+
+    <div class="story-block center shadow-indigo">
+      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+        Meanwhile, in the lab, a different language revolution was unfolding.
+      </h2>
+    </div>
+
+    <div class="story-block right shadow-purple">
+      <p>
+        Starting in the <strong class="text-purple">1970s</strong> with <strong class="text-purple">Sanger's methods</strong>, we first learned to read the individual <strong class="text-purple">letters</strong> of life's code—the <strong class="text-warning">A, T, C, and G</strong> of <strong class="text-purple">DNA</strong>.
+      </p>
+    </div>
+
+    <div class="story-block left shadow-blue">
+      <p>
+        In the <strong class="text-info">1990s</strong>, machines learned to count with <strong class="text-info">n-gram models</strong>, predicting the <strong class="text-warning">next word</strong> based on <strong class="text-info">statistics</strong>. They understood the <strong class="text-info">grammar</strong> of a sentence, but not the <strong class="text-warning">meaning</strong> of the story.
+      </p>
+    </div>
+
+    <div class="story-block right shadow-purple">
+      <p>
+        Soon, in <strong class="text-purple">late 20th</strong> and <strong class="text-purple">early 21st centuries</strong>, we were reading entire <strong class="text-purple">sentences</strong> and <strong class="text-purple">paragraphs</strong>—<strong class="text-purple">mapping genomes</strong>, <strong class="text-purple">profiling gene expression</strong> (<strong class="text-purple">transcriptomes</strong>), and identifying the vast library of <strong class="text-purple">proteins</strong> (<strong class="text-purple">proteomes</strong>).
+      </p>
+    </div>
+
+    <div class="story-block left shadow-blue">
+      <p>
+        Then, in <strong class="text-purple">2017</strong>, the world was shattered by a five-word sentence: <strong class="text-purple">Attention is all you need</strong>. It was the <strong class="text-purple">revolution</strong> of the <strong class="text-purple">Transformer</strong>, and for the first time, it gave a <strong class="text-purple">machine</strong> the power to <strong class="text-warning">grasp context</strong>, connecting the <strong class="text-purple">beginning</strong> of a story to its <strong class="text-warning">end</strong>.
+      </p>
+    </div>
+
+    <div class="w-100 my-4">
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+        Humanity taught machines to speak.
+      </h2>
+      <div class="d-flex flex-column align-items-center" style="height: 100px">
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+      </div>
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+        Then, to write.
+      </h2>
+      <div class="d-flex flex-column align-items-center" style="height: 100px">
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+        <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
+      </div>
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+        Now, to reason.
+      </h2>
+    </div>
+
+    <div class="story-block right shadow-purple">
+      <p>
+        We generated <strong class="text-purple">oceans of data</strong>. But there was a <strong class="text-warning">problem</strong>. Each dataset spoke a <strong class="text-purple">different biological language</strong>.
+      </p>
+    </div>
+
+    <div class="story-block left shadow-blue">
+      <p>
+        We had <strong class="text-info">powerful tools</strong> to analyze <strong class="text-info">DNA</strong>. Separate tools for <strong class="text-info">proteins</strong>. And yet more for <strong class="text-info">cell expression profiles</strong>. They were <strong class="text-warning">brilliant</strong>, but <strong class="text-warning">monolingual</strong>. They were isolated in <strong class="text-purple">digital silos</strong>.
+      </p>
+    </div>
+
+    <div class="story-block center shadow-indigo">
+      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+        Biology's greatest insights were getting lost in translation.
+      </h2>
+    </div>
+
+    <div class="story-block center shadow-indigo">
+      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+        Research was stuck in a slow, frustrating cycle:
+      </h2>
+    </div>
+
+    <div class="d-flex flex-wrap justify-content-center gap-4 mb-5" style="max-width: 1200px; margin: 0 auto;">
+      <div class="story-block shadow-purple" style="flex: 1; min-width: 300px; max-width: 350px; padding: 2rem 1.5rem; margin-bottom: 2rem;">
+        <h4 class="gradient-text fw-bold fs-4 mb-3 text-center" style="font-size: 1.4rem;">
+          <strong>Fragmented Models</strong>
+        </h4>
+        <p class="mb-0 text-center" style="font-size: 1rem; line-height: 1.6;">
+          Tools could only see one piece of the puzzle at a time.
+        </p>
+      </div>
+      
+      <div class="story-block shadow-blue" style="flex: 1; min-width: 300px; max-width: 350px; padding: 2rem 1.5rem; margin-bottom: 2rem;">
+        <h4 class="gradient-text fw-bold fs-4 mb-3 text-center" style="font-size: 1.4rem;">
+          <strong>Data Scarcity</strong>
+        </h4>
+        <p class="mb-0 text-center" style="font-size: 1rem; line-height: 1.6;">
+          Each biological "language" had a limited vocabulary, stunting AI growth.
+        </p>
+      </div>
+      
+      <div class="story-block shadow-indigo" style="flex: 1; min-width: 300px; max-width: 350px; padding: 2rem 1.5rem; margin-bottom: 2rem;">
+        <h4 class="gradient-text fw-bold fs-4 mb-3 text-center" style="font-size: 1.4rem;">
+          <strong>"Wet-Dry Lab" Divide</strong>
+        </h4>
+        <p class="mb-0 text-center" style="font-size: 1rem; line-height: 1.6;">
+          A massive gap existed between computational prediction and real-world experimentation.
+        </p>
+      </div>
+    </div>
   </div>
-  <div class="col-lg-4">
-    <h2>Inspiration</h2>
-    <hr />
-    <p>You can also view other team wikis for inspiration! Here are some examples:</p>
-    <ul>
-      <li><a href="https://2024.igem.wiki/ju-krakow">2024 JU-Krakow</a></li>
-      <li><a href="https://2024.igem.wiki/gems-taiwan">2024 GEMS-Taiwan</a></li>
-      <li><a href="https://2024.igem.wiki/heidelberg">2024 Heidelberg</a></li>
-      <li><a href="https://2024.igem.wiki/marburg">2024 Marburg</a></li>
-      <li><a href="https://2024.igem.wiki/sydney-australia">2024 Sydney-Australia</a></li>
-      <li><a href="https://2024.igem.wiki/toulouse-insa-ups">2024 Toulouse-INSA-UPS</a></li>
-      <li><a href="https://2024.igem.wiki/bnds-china">2024 BNDS-China</a></li>
-      <li><a href="https://2024.igem.wiki/vilnius-lithuania">2024 Vilnius-Lithuania</a></li>
-      <li><a href="https://2024.igem.wiki/bnuzh-china">2024 BNUZH-China</a></li>
-      <li><a href="https://2024.igem.wiki/xmu-china">2024 XMU-China</a></li>
-    </ul>
+</section>
+
+<!-- Point of convergence -->
+<section id="destiny-section" class="vh-100 d-flex align-items-center justify-content-center px-3 position-relative">
+  <div class="text-center w-100 destiny-bg" style="max-width: 900px; z-index:1;">
+    <h1 class="gradient-text fw-bold display-4 mb-4">
+      This is where the two stories meet.
+    </h1>
+    <p class="fs-4 text-secondary mb-4">
+      What if... an AI that mastered the art of human language could become
+      fluent in the complex, interconnected language of biology? 
+      <br>
+      Not just as a translator for one dialect, but as a native speaker of them all.
+    </p>
+    <div id="dna-scene"></div>
   </div>
-</div>
+</section>
+
+<!-- Merged story area -->
+<section class="py-5 position-relative" id="merged-story" style="z-index: 2">
+  <div id="merged-stories">
+    <!-- Product introduction card -->
+    <div class="story-block center product-intro-card">
+      <div class="particles-bg" id="particles-container"></div>
+      <h1 class="epic-title mb-4 text-center">
+        Introducing BIOMNIGEM.
+      </h1>
+      <p class="epic-subtitle mb-0 text-center">
+        A Unified, LLM-Driven Multimodal Framework for Synthetic Biology.
+      </p>
+    </div>
+
+    <!-- Core philosophy card -->
+    <div class="story-block left shadow-blue">
+      <p class="mb-0">
+        BIOMNIGEM is not another specialized tool. It is a <strong class="text-info">scientific reasoning engine</strong>, built upon a powerful Large Language Model, designed to understand biology as a <strong class="text-warning">holistic system</strong>.
+      </p>
+    </div>
+
+    <!-- Capability description card -->
+    <div class="story-block right shadow-purple">
+      <p class="mb-0">
+        It reads the <strong class="text-info">DNA sequence</strong>, understands its effect on <strong class="text-purple">gene expression</strong>, and predicts the final <strong class="text-info">protein structure</strong> and function—all in a single, seamless conversation.
+      </p>
+    </div>
+
+    <!-- Title separator card -->
+    <div class="story-block center shadow-indigo">
+      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+        What does it mean to speak the language of life?
+      </h2>
+    </div>
+
+    <!-- Feature card 1 -->
+    <div class="story-block left shadow-blue">
+      <div class="d-flex align-items-start">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info bg-opacity-25 me-3 feature-icon blue">
+          <i class="fas fa-sitemap"></i>
+        </span>
+        <div>
+          <h3 class="gradient-text fw-bold fs-5 mb-2">Unify Silos</h3>
+          <p class="mb-0">
+            Instead of analyzing DNA, RNA, and proteins separately, BIOMNIGEM integrates them to reveal the full picture, revealing insights that are invisible to single-modality tools.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature card 2 -->
+    <div class="story-block right shadow-purple">
+      <div class="d-flex align-items-start">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-purple bg-opacity-25 me-3 feature-icon purple">
+          <i class="fas fa-brain"></i>
+        </span>
+        <div>
+          <h3 class="gradient-text fw-bold fs-5 mb-2">Reason and Hypothesize</h3>
+          <p class="mb-0">
+            Ask complex questions in plain English. BIOMNIGEM doesn't just give you a prediction; it explains its reasoning, fostering a "Biological Chain-of-Thought" (BioCoT).
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature card 3 -->
+    <div class="story-block left shadow-blue">
+      <div class="d-flex align-items-start">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-info bg-opacity-25 me-3 feature-icon blue">
+          <i class="fas fa-flask"></i>
+        </span>
+        <div>
+          <h3 class="gradient-text fw-bold fs-5 mb-2">Generate and Engineer</h3>
+          <p class="mb-0">
+            Transcend analysis. Prompt BIOMNIGEM to design a protein with a novel function, debug a failing genetic circuit, or predict the systemic impact of a mutation before a single pipette is touched.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Feature card 4 -->
+    <div class="story-block right shadow-purple">
+      <div class="d-flex align-items-start">
+        <span class="d-inline-flex align-items-center justify-content-center rounded-circle bg-purple bg-opacity-25 me-3 feature-icon purple">
+          <i class="fas fa-bridge"></i>
+        </span>
+        <div>
+          <h3 class="gradient-text fw-bold fs-5 mb-2">Bridge the Wet-Lab Gap</h3>
+          <p class="mb-0">
+            BIOMNIGEM can interpret experimental data, like microscopy images, and help design the next round of experiments, accelerating the cycle of discovery by 4x.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Summary card -->
+    <div class="story-block center shadow-indigo">
+      <p class="fs-5 mb-4 text-center">
+        BIOMNIGEM is more than a model; it's a <strong class="text-warning">collaborative partner</strong> for discovery. It's the biologist's copilot, breaking down the barriers that have slowed scientific progress for decades.
+      </p>
+      <div class="text-center">
+        <a href="{{ url_for('pages', page='description') }}" class="btn bg-gradient-btn px-5 py-3 fw-bold fs-5 shadow">
+          EXPLORE THE FUTURE OF BIOLOGY
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 所有 story-block 和主要文字块滚动到页面中心时渐入，反向滚动时渐出
+  function revealBlocksOnScroll() {
+    const blocks = document.querySelectorAll(".story-block, .w-100.my-4, .destiny-bg");
+    const windowHeight = window.innerHeight;
+    const offset = 200;
+    blocks.forEach((block) => {
+      const rect = block.getBoundingClientRect();
+      const blockCenter = rect.top + rect.height / 2;
+      const centerMin = windowHeight / 2 - offset;
+      const centerMax = windowHeight / 2 + offset;
+      if (blockCenter > centerMin && blockCenter < centerMax) {
+        block.classList.add("visible");
+      } else {
+        block.classList.remove("visible");
+      }
+    });
+  }
+  window.addEventListener("scroll", revealBlocksOnScroll);
+  window.addEventListener("resize", revealBlocksOnScroll);
+  setTimeout(revealBlocksOnScroll, 100);
+
+  // 动态二进制线 clue
+  function randomBinary(len) {
+    let s = "";
+    for (let i = 0; i < len; i++) s += Math.round(Math.random());
+    return s;
+  }
+  function randomDNA(len) {
+    const nts = ["A", "T", "C", "G"];
+    let s = "";
+    for (let i = 0; i < len; i++) s += nts[Math.floor(Math.random() * 4)];
+    return s;
+  }
+
+  function getBlinkClass() {
+    const rand = Math.random();
+    if (rand > 0.85) return "blink-fast";
+    if (rand > 0.7) return "blink-slow";
+    return "";
+  }
+  
+  function updateClueCharacters(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    
+    const bases = ["A", "T", "C", "G"];
+    const spans = el.querySelectorAll('span');
+    
+    spans.forEach(span => {
+      if (Math.random() < 0.01) {
+        const chain = (id === 'dnaClue') ? 0 : 1;
+        if (chain === 0) {
+          span.textContent = bases[Math.floor(Math.random() * 4)];
+        } else {
+          span.textContent = Math.random() > 0.5 ? "0" : "1";
+        }
+      }
+    });
+  }
+
+  function renderClueLine(id, str) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    
+    while (el.childNodes.length > str.length) el.removeChild(el.lastChild);
+    for (let i = 0; i < str.length; i++) {
+      let span = el.childNodes[i];
+      if (!span) {
+        span = document.createElement("span");
+        span.textContent = str[i];
+        span.style.opacity = 0;
+        span.className = getBlinkClass();
+        el.appendChild(span);
+        setTimeout(() => {
+          span.style.transition = "opacity 0.3s";
+          span.style.opacity = 1;
+        }, i * 50);
+      } else {
+        if (span.textContent !== str[i]) {
+          span.textContent = str[i];
+          span.style.opacity = 0;
+          span.className = getBlinkClass();
+          setTimeout(() => {
+            span.style.transition = "opacity 0.3s";
+            span.style.opacity = 1;
+          }, i * 50);
+        }
+      }
+    }
+  }
+
+  let clueLen = 10;
+  let mergeLen = 50;
+  let destinyBendActive = false;
+  let destinyPassedCompletely = false;
+  let horizontalCluesDisappeared = false;
+  let lastBendUpdateKey = '';
+  
+  function updateClueLen() {
+    const scrollTop = window.scrollY;
+    const windowHeight = window.innerHeight;
+    
+    const destinySection = document.getElementById('destiny-section');
+    const destinyBg = destinySection?.querySelector('.destiny-bg');
+    
+    if (destinySection && destinyBg) {
+      const destinyRect = destinySection.getBoundingClientRect();
+      const destinyBgRect = destinyBg.getBoundingClientRect();
+      
+      if (destinyRect.bottom < 0) {
+        destinyPassedCompletely = true;
+      } 
+      else if (destinyRect.top < windowHeight && destinyPassedCompletely) {
+        destinyPassedCompletely = false;
+      }
+      
+      if (destinyBgRect.bottom > 0 && horizontalCluesDisappeared) {
+        horizontalCluesDisappeared = false;
+        const binaryClue = document.getElementById('binaryClue');
+        const dnaClue = document.getElementById('dnaClue');
+        binaryClue.style.opacity = '0.7';
+        dnaClue.style.opacity = '0.7';
+      }
+      
+      const shouldActiveBend = destinyRect.top < windowHeight * 0.9 && destinyBgRect.bottom > -50 && !horizontalCluesDisappeared;
+      
+      if (shouldActiveBend !== destinyBendActive) {
+        destinyBendActive = shouldActiveBend;
+        if (destinyBendActive) {
+          activateDestinyBend(destinyBgRect);
+        } else {
+          deactivateDestinyBend();
+        }
+      }
+      
+      if (destinyBendActive) {
+        updateDestinyBend(destinyBgRect);
+      }
+    }
+    
+    let maxClueHeight = windowHeight * 0.7;
+    
+    if (destinyBendActive && destinyBg) {
+      const destinyBgRect = destinyBg.getBoundingClientRect();
+      const bendY = destinyBgRect.top + destinyBgRect.height / 2;
+      maxClueHeight = Math.max(100, bendY - 40);
+    }
+    
+    const clueTopOffset = 40;
+    const charHeight = 24;
+    const maxClueLen = Math.max(10, Math.floor((maxClueHeight - clueTopOffset) / charHeight));
+    clueLen = Math.min(
+      maxClueLen,
+      Math.floor(10 + Math.pow(scrollTop / (windowHeight * 2), 1.5) * 90)
+    );
+    
+    const merged = document.getElementById("merged-story");
+    const mergedTop = merged.offsetTop;
+    const progress = Math.max(
+      0,
+      (scrollTop - mergedTop + windowHeight) / (windowHeight * 2)
+    );
+    mergeLen = Math.min(200, Math.floor(50 + progress * 150));
+  }
+  
+  function activateDestinyBend(destinyBgRect) {
+    const binaryClue = document.getElementById('binaryClue');
+    const dnaClue = document.getElementById('dnaClue');
+    
+    binaryClue.classList.add('bent');
+    dnaClue.classList.add('bent');
+  }
+  
+  function deactivateDestinyBend() {
+    const binaryClue = document.getElementById('binaryClue');
+    const dnaClue = document.getElementById('dnaClue');
+    
+    binaryClue.classList.remove('bent');
+    dnaClue.classList.remove('bent');
+    
+    if (!horizontalCluesDisappeared) {
+      binaryClue.innerHTML = '';
+      dnaClue.innerHTML = '';
+      binaryClue.style.opacity = '0.7';
+      dnaClue.style.opacity = '0.7';
+    }
+    
+    lastBendUpdateKey = '';
+  }
+  
+  function updateDestinyBend(destinyBgRect) {
+    const binaryClue = document.getElementById('binaryClue');
+    const dnaClue = document.getElementById('dnaClue');
+    
+    const bendY = destinyBgRect.top + destinyBgRect.height / 2;
+    
+    if (bendY < 0) {
+      horizontalCluesDisappeared = true;
+      binaryClue.innerHTML = '';
+      dnaClue.innerHTML = '';
+      binaryClue.style.opacity = '0';
+      dnaClue.style.opacity = '0';
+      return;
+    } else {
+      if (horizontalCluesDisappeared) {
+        horizontalCluesDisappeared = false;
+      }
+      binaryClue.style.opacity = '0.7';
+      dnaClue.style.opacity = '0.7';
+    }
+    
+    const leftDistance = Math.abs(destinyBgRect.left - 74);
+    const rightDistance = Math.abs(destinyBgRect.right - (window.innerWidth - 74));
+    const charWidth = 12;
+    const leftHorizontalChars = Math.floor(leftDistance / charWidth);
+    const rightHorizontalChars = Math.floor(rightDistance / charWidth);
+    
+    const verticalChars = Math.max(0, Math.floor((bendY - 40) / 24));
+    
+    const currentUpdateKey = `${verticalChars}-${leftHorizontalChars}-${rightHorizontalChars}`;
+    
+    if (currentUpdateKey !== lastBendUpdateKey) {
+      lastBendUpdateKey = currentUpdateKey;
+      
+      const verticalBinary = verticalChars > 0 ? randomBinary(verticalChars) : '';
+      const verticalDNA = verticalChars > 0 ? randomDNA(verticalChars) : '';
+      
+      const horizontalBinary = randomBinary(Math.max(1, leftHorizontalChars));
+      const horizontalDNA = randomDNA(Math.max(1, rightHorizontalChars));
+      
+      binaryClue.innerHTML = `
+        ${verticalChars > 0 ? `<div class="vertical-part">${verticalBinary.split('').map(char => 
+          `<span class="${getBlinkClass()}">${char}</span>`
+        ).join('')}</div>` : ''}
+        <div class="horizontal-part">${horizontalBinary.split('').map(char => 
+          `<span class="${getBlinkClass()}">${char}</span>`
+        ).join('')}</div>
+      `;
+      
+      dnaClue.innerHTML = `
+        ${verticalChars > 0 ? `<div class="vertical-part">${verticalDNA.split('').map(char => 
+          `<span class="${getBlinkClass()}">${char}</span>`
+        ).join('')}</div>` : ''}
+        <div class="horizontal-part" style="text-align: right; direction: rtl;">${horizontalDNA.split('').map(char => 
+          `<span class="${getBlinkClass()}">${char}</span>`
+        ).join('')}</div>
+      `;
+    }
+  }
+  
+  function updateBentClueCharacters() {
+    updateClueCharacters('binaryClue');
+    updateClueCharacters('dnaClue');
+  }
+  
+  window.addEventListener("scroll", updateClueLen);
+  updateClueLen();
+
+  setInterval(() => {
+    if (!horizontalCluesDisappeared) {
+      if (!destinyBendActive) {
+        renderClueLine("binaryClue", randomBinary(clueLen));
+        renderClueLine("dnaClue", randomDNA(clueLen));
+        updateClueCharacters("binaryClue");
+        updateClueCharacters("dnaClue");
+      } else {
+        updateBentClueCharacters();
+      }
+    }
+  }, 500);
+
+  document.getElementById("binaryClue").style.left = "50px";
+  document.getElementById("binaryClue").style.transform = "none";
+  document.getElementById("dnaClue").style.right = "50px";
+  document.getElementById("dnaClue").style.transform = "none";
+  
+  // DNA双螺旋动画
+  const dnaScene = document.getElementById("dna-scene");
+  const bases = ['A', 'T', 'C', 'G'];
+  const NUM = 214;
+  const AMP = 80;
+  const GAP = 15;
+  const SPEED = 0.02;
+
+  let dnaChars = [];
+  for (let i = 0; i < NUM; i++) {
+    let span1 = document.createElement("span");
+    let span2 = document.createElement("span");
+    span1.className = "dna-char purple";
+    span2.className = "dna-char";
+    span1.textContent = bases[Math.floor(Math.random() * 4)];
+    span2.textContent = Math.random() > 0.5 ? "0" : "1";
+    dnaScene.appendChild(span1);
+    dnaScene.appendChild(span2);
+    dnaChars.push({ span: span1, chain: 0, index: i });
+    dnaChars.push({ span: span2, chain: 1, index: i });
+  }
+
+  let dnaTheta = 0;
+
+  function animateDNA() {
+    dnaTheta += SPEED;
+
+    dnaChars.forEach(({ span, chain, index }) => {
+      let angle = dnaTheta + index * 0.3;
+      let phase = chain === 0 ? 0 : Math.PI;
+      let x = AMP * Math.sin(angle + phase);
+      let z = AMP * Math.cos(angle + phase);
+      let y = index * GAP;
+
+      let cycleHeight = NUM * GAP;
+      let adjustedY = ((y - dnaTheta * 100) % cycleHeight + cycleHeight) % cycleHeight;
+
+      let scale = 1 + z / 500;
+      let opacity = 0.3 + (z + AMP) / (2 * AMP);
+
+      span.style.transform = `translateX(${x}px) translateY(${adjustedY}px) translateZ(${z}px) scale(${scale})`;
+      span.style.opacity = opacity.toFixed(2);
+
+      if (Math.random() < 0.01) {
+        if (chain === 0) {
+          span.textContent = bases[Math.floor(Math.random() * 4)];
+        } else {
+          span.textContent = Math.random() > 0.5 ? "0" : "1";
+        }
+      }
+    });
+
+    requestAnimationFrame(animateDNA);
+  }
+
+  animateDNA();
+  
+  // 创建星空背景
+  function createStarfield() {
+    const starfield = document.getElementById('starfield');
+    if (!starfield) return;
+    
+    const starCount = 150;
+    const starTypes = ['small', 'medium', 'large'];
+    const starWeights = [0.7, 0.25, 0.05];
+    
+    for (let i = 0; i < starCount; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      
+      const rand = Math.random();
+      let starType = 'small';
+      let cumulative = 0;
+      for (let j = 0; j < starWeights.length; j++) {
+        cumulative += starWeights[j];
+        if (rand <= cumulative) {
+          starType = starTypes[j];
+          break;
+        }
+      }
+      star.classList.add(starType);
+      
+      star.style.left = Math.random() * 100 + '%';
+      star.style.top = Math.random() * 100 + '%';
+      
+      star.style.animationDelay = Math.random() * 3 + 's';
+      star.style.animationDuration = (2 + Math.random() * 2) + 's';
+      
+      starfield.appendChild(star);
+    }
+  }
+  
+  // 创建浮动分子效果
+  function createFloatingMolecules() {
+    const container = document.getElementById('floating-molecules');
+    if (!container) return;
+    
+    const moleculeCount = 20;
+    
+    for (let i = 0; i < moleculeCount; i++) {
+      const molecule = document.createElement('div');
+      molecule.className = 'molecule';
+      
+      if (Math.random() > 0.7) {
+        molecule.classList.add('large');
+      }
+      
+      molecule.style.left = Math.random() * 100 + '%';
+      
+      molecule.style.animationDelay = Math.random() * 15 + 's';
+      molecule.style.animationDuration = (12 + Math.random() * 6) + 's';
+      
+      container.appendChild(molecule);
+    }
+    
+    setInterval(() => {
+      if (container.children.length < moleculeCount * 2) {
+        const molecule = document.createElement('div');
+        molecule.className = 'molecule';
+        
+        if (Math.random() > 0.7) {
+          molecule.classList.add('large');
+        }
+        
+        molecule.style.left = Math.random() * 100 + '%';
+        molecule.style.animationDuration = (12 + Math.random() * 6) + 's';
+        
+        container.appendChild(molecule);
+        
+        setTimeout(() => {
+          if (molecule.parentNode) {
+            molecule.parentNode.removeChild(molecule);
+          }
+        }, 20000);
+      }
+    }, 2000);
+  }
+  
+  // 创建神经网络效果
+  function createNeuralNetwork() {
+    const container = document.getElementById('neural-network');
+    if (!container) return;
+    
+    const nodeCount = 15;
+    const nodes = [];
+    
+    for (let i = 0; i < nodeCount; i++) {
+      const node = document.createElement('div');
+      node.className = 'neural-node';
+      
+      if (Math.random() > 0.5) {
+        node.classList.add('purple');
+      }
+      
+      const x = 10 + Math.random() * 80;
+      const y = 10 + Math.random() * 80;
+      node.style.left = x + '%';
+      node.style.top = y + '%';
+      
+      node.style.animationDelay = Math.random() * 4 + 's';
+      
+      container.appendChild(node);
+      nodes.push({ element: node, x, y });
+    }
+    
+    nodes.forEach((nodeA, i) => {
+      nodes.forEach((nodeB, j) => {
+        if (i < j && Math.random() > 0.7) {
+          const connection = document.createElement('div');
+          connection.className = 'neural-connection';
+          
+          if (Math.random() > 0.5) {
+            connection.classList.add('purple');
+          }
+          
+          const dx = nodeB.x - nodeA.x;
+          const dy = nodeB.y - nodeA.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+          
+          connection.style.left = nodeA.x + '%';
+          connection.style.top = nodeA.y + '%';
+          connection.style.width = distance + '%';
+          connection.style.transform = `rotate(${angle}deg)`;
+          connection.style.animationDelay = Math.random() * 6 + 's';
+          
+          container.appendChild(connection);
+        }
+      });
+    });
+  }
+  
+  // 初始化背景效果
+  setTimeout(() => {
+    createStarfield();
+    createFloatingMolecules();
+    createNeuralNetwork();
+  }, 500);
+  
+  // 顶部intro淡出
+  window.addEventListener("scroll", () => {
+    const intro = document.getElementById("intro");
+    const opacity = Math.max(
+      0,
+      1 - window.scrollY / (window.innerHeight * 0.2)
+    );
+    intro.style.opacity = opacity;
+    intro.style.pointerEvents = opacity > 0 ? "auto" : "none";
+  });
+</script>
 
 {% endblock %}
