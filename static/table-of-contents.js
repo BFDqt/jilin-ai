@@ -310,6 +310,19 @@ class TableOfContents {
   setupIntersectionObserver() {
     const headingElements = this.headings.map(h => h.element);
     const callback = (entries) => {
+      // 检查是否滚动到页面底部
+      const scrollHeight = document.documentElement.scrollHeight;
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const clientHeight = document.documentElement.clientHeight;
+      const isAtBottom = scrollTop + clientHeight >= scrollHeight - 50; // 50px 容错
+      
+      if (isAtBottom && this.headings.length > 0) {
+        // 如果在底部，激活最后一个标题
+        const lastHeading = this.headings[this.headings.length - 1];
+        this.setActiveId(lastHeading.id);
+        return;
+      }
+      
       let visible = entries.filter(e => e.isIntersecting);
       if (visible.length > 0) {
         // 取最上方可见heading
@@ -323,6 +336,23 @@ class TableOfContents {
       threshold: 0.1
     });
     headingElements.forEach(el => observer.observe(el));
+    
+    // 添加滚动监听以处理底部情况
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 50;
+        
+        if (isAtBottom && this.headings.length > 0) {
+          const lastHeading = this.headings[this.headings.length - 1];
+          this.setActiveId(lastHeading.id);
+        }
+      }, 100);
+    }, { passive: true });
   }
 
   setActiveId(id) {
@@ -356,12 +386,14 @@ class TableOfContents {
   }
 
   setupFadeInOnScroll() {
-    // 监听页面滚动，判断TOC是否进入视口
+    // 监听页面滚动，判断TOC是否进入视口，并考虑滚动位置
     const toc = document.querySelector('.toc-container');
     const onScroll = () => {
       const rect = toc.getBoundingClientRect();
       const inView = rect.top < window.innerHeight && rect.bottom > 0;
-      if (inView) {
+      const scrolledEnough = window.scrollY >= 10; // 与下方逻辑一致
+      
+      if (inView && scrolledEnough) {
         toc.classList.add('fade-in');
       } else {
         toc.classList.remove('fade-in');
@@ -374,34 +406,9 @@ class TableOfContents {
 
 // Initialize TOC when page is fully loaded
 window.addEventListener('load', () => {
-
   const toc = new TableOfContents();
   console.log('TOC: Initialized with', toc.headings.length, 'headings');
 });
-
-// TOC 淡入淡出控制
-(function() {
-  var toc = document.querySelector('.toc-container');
-  if (!toc) return;
-  var lastScrollY = window.scrollY;
-  var ticking = false;
-  function updateTOCVisibility() {
-    if (window.scrollY < 10) {
-      toc.classList.remove('fade-in');
-    } else {
-      toc.classList.add('fade-in');
-    }
-    ticking = false;
-  }
-  window.addEventListener('scroll', function() {
-    if (!ticking) {
-      window.requestAnimationFrame(updateTOCVisibility);
-      ticking = true;
-    }
-  });
-  // 初始状态
-  updateTOCVisibility();
-})();
 
 // 返回顶部按钮逻辑 - 完全重构版本
 (function() {

@@ -15,7 +15,7 @@
       #2a0a4a 100%
     ) !important;
     color: #fff !important;
-    font-family: "Inter", "Segoe UI", Arial, sans-serif !important;
+    font-family: "Inter", Arial, sans-serif !important;
     overflow-x: hidden;
   }
   .destiny-bg {
@@ -48,20 +48,23 @@
     text-fill-color: transparent;
     line-height: 1.5;
     letter-spacing: 0.02em;
+    pointer-events: none;
   }
   h1.gradient-text {
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-family: "Inter", Arial, sans-serif;
     font-size: 3.2rem;
     font-weight: 700;
     line-height: 1.5 !important;
     letter-spacing: 0.02em;
+    pointer-events: none;
   }
   h2.gradient-text {
-    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    font-family: "Inter", Arial, sans-serif;
     font-size: 2.1rem;
     font-weight: 600;
-    line-height: 1.22 !important;
+    line-height: 1.5 !important;
     letter-spacing: 0.01em;
+    pointer-events: none;
   }
   .story-block {
     font-family: "Merriweather", serif;
@@ -77,8 +80,18 @@
     margin-bottom: 10rem;
     opacity: 0;
     transform: translateY(40px);
+    pointer-events: none;
   }
   .story-block.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-in-text {
+    transition: all 0.6s cubic-bezier(0.77, 0, 0.18, 1);
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  .fade-in-text.visible {
     opacity: 1;
     transform: translateY(0);
   }
@@ -109,9 +122,20 @@
   }
   .feature-icon.blue {
     color: #60a5fa;
+    /* 移除由 Bootstrap 的 bg-info bg-opacity-25 提供的蓝色圆形背景 */
+    background-color: transparent !important;
+    /* 保持圆形内图标居中（如果需要可调整） */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .feature-icon.purple {
     color: #c084fc;
+    /* 移除由 Bootstrap 的 bg-purple bg-opacity-25 提供的紫色圆形背景 */
+    background-color: transparent !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   .clue-line {
     font-family: "Courier New", monospace;
@@ -191,6 +215,7 @@
     transform: translateX(-50%);
     opacity: 0.8;
     z-index: 10;
+    pointer-events: none;
   }
   @keyframes bounce {
     0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
@@ -236,6 +261,7 @@
     text-shadow: 0 0 10px cyan, 0 0 20px blue;
     white-space: pre;
     perspective: 1000px;
+    pointer-events: none;
   }
   .dna-char.purple {
     color: #c084fc;
@@ -369,6 +395,7 @@
     position: absolute;
     opacity: 0.1;
     animation: moleculeFloat 15s infinite linear;
+    pointer-events: none;
   }
   .molecule::before {
     content: '';
@@ -426,6 +453,7 @@
     background: white;
     border-radius: 50%;
     animation: starTwinkle 3s infinite alternate;
+    pointer-events: none;
   }
   .star.small {
     width: 1px;
@@ -469,6 +497,7 @@
     background: radial-gradient(circle, rgba(96, 165, 250, 0.8) 0%, rgba(96, 165, 250, 0) 70%);
     border-radius: 50%;
     animation: nodeGlow 4s infinite alternate;
+    pointer-events: none;
   }
   .neural-node.purple {
     background: radial-gradient(circle, rgba(192, 132, 252, 0.8) 0%, rgba(192, 132, 252, 0) 70%);
@@ -482,6 +511,7 @@
       rgba(96, 165, 250, 0) 100%);
     transform-origin: left center;
     animation: connectionPulse 6s infinite;
+    pointer-events: none;
   }
   .neural-connection.purple {
     background: linear-gradient(90deg, 
@@ -535,7 +565,7 @@
     <!-- In the beginning, there was the Word. -->
     In the beginning was the Word.
     </h1>
-    <p class="text-secondary fs-5">(John 1:1-18)</p>
+    <p class="text-secondary fs-5" style="opacity: 0.25;">(John 1:1-18)</p>
   </div>
 </section>
 
@@ -544,12 +574,12 @@
   <div id="parallel-stories">
     <div class="story-block left shadow-blue">
       <p>
-        As early as <strong class="text-info">1966</strong>, we built <strong class="text-info">machines</strong> that followed <strong class="text-info">simple rules</strong>, like digital parrots mimicking conversation (<strong class="text-purple">ELIZA</strong>). They could <strong class="text-warning">repeat</strong>, but not <strong class="text-warning">comprehend</strong>.
+        As early as <strong class="text-info">1966</strong>, we built <strong class="text-info">machines</strong> that followed <strong class="text-info">simple rules</strong>, like digital parrots mimicking conversation (<strong class="text-info">ELIZA</strong>). They could <strong class="text-warning">repeat</strong>, but not <strong class="text-warning">comprehend</strong>.
       </p>
     </div>
 
-    <div class="story-block center shadow-indigo">
-      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+    <div class="w-100 my-4 fade-in-text">
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
         Meanwhile, in the lab, a different language revolution was unfolding.
       </h2>
     </div>
@@ -579,25 +609,31 @@
     </div>
 
     <div class="w-100 my-4">
-      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
-        Humanity taught machines to speak.
-      </h2>
-      <div class="d-flex flex-column align-items-center" style="height: 100px">
+      <div class="fade-in-text">
+        <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+          Humanity taught machines to speak.
+        </h2>
+      </div>
+      <div class="d-flex flex-column align-items-center fade-in-text" style="height: 100px">
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
       </div>
-      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
-        Then, to write.
-      </h2>
-      <div class="d-flex flex-column align-items-center" style="height: 100px">
+      <div class="fade-in-text">
+        <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+          Then, to write.
+        </h2>
+      </div>
+      <div class="d-flex flex-column align-items-center fade-in-text" style="height: 100px">
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
         <span style="font-size: 2rem; line-height: 1; color: #a5f3fc">&bull;</span>
       </div>
-      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
-        Now, to reason.
-      </h2>
+      <div class="fade-in-text">
+        <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
+          Now, to reason.
+        </h2>
+      </div>
     </div>
 
     <div class="story-block right shadow-purple">
@@ -612,14 +648,14 @@
       </p>
     </div>
 
-    <div class="story-block center shadow-indigo">
-      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+    <div class="w-100 my-4 fade-in-text">
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
         Biology's greatest insights were getting lost in translation.
       </h2>
     </div>
 
-    <div class="story-block center shadow-indigo">
-      <h2 class="gradient-text fw-bold fs-3 mb-0 text-center">
+    <div class="w-100 my-4 fade-in-text">
+      <h2 class="gradient-text fw-bold display-4 mb-3 text-center">
         Research was stuck in a slow, frustrating cycle:
       </h2>
     </div>
@@ -767,7 +803,7 @@
     </div>
 
     <!-- Summary card -->
-    <div class="story-block center shadow-indigo">
+    <div id="summary" class="story-block center shadow-indigo">
       <p class="fs-5 mb-4 text-center">
         BIOMNIGEM is more than a model; it's a <strong class="text-warning">collaborative partner</strong> for discovery. It's the biologist's copilot, breaking down the barriers that have slowed scientific progress for decades.
       </p>
@@ -777,13 +813,15 @@
         </a>
       </div>
     </div>
+
+    <iframe title="Jilin-AI: BIOMNIGEM (2025) - Project Promotion [English]" width="560" height="315" src="https://video.igem.org/w/sJSeoc6caeU5WeSEQd4WtS" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" style="border: 0px;"></iframe>
   </div>
 </section>
 
 <script>
   // 所有 story-block 和主要文字块滚动到页面中心时渐入，反向滚动时渐出
   function revealBlocksOnScroll() {
-    const blocks = document.querySelectorAll(".story-block, .w-100.my-4, .destiny-bg");
+    const blocks = document.querySelectorAll(".story-block, .w-100.my-4, .destiny-bg, .fade-in-text");
     const windowHeight = window.innerHeight;
     const offset = 200;
     blocks.forEach((block) => {
@@ -1060,46 +1098,100 @@
   // DNA双螺旋动画
   const dnaScene = document.getElementById("dna-scene");
   const bases = ['A', 'T', 'C', 'G'];
-  const NUM = 214;
   const AMP = 80;
-  const GAP = 15;
-  const SPEED = 0.02;
-
+  const GAP = 20;
+  const SPEED = 0.01;
+  const TURNS = 10; // DNA螺旋圈数，保持视觉效果
+  
+  let NUM = 214; // 初始值，将动态更新
   let dnaChars = [];
-  for (let i = 0; i < NUM; i++) {
-    let span1 = document.createElement("span");
-    let span2 = document.createElement("span");
-    span1.className = "dna-char purple";
-    span2.className = "dna-char";
-    span1.textContent = bases[Math.floor(Math.random() * 4)];
-    span2.textContent = Math.random() > 0.5 ? "0" : "1";
-    dnaScene.appendChild(span1);
-    dnaScene.appendChild(span2);
-    dnaChars.push({ span: span1, chain: 0, index: i });
-    dnaChars.push({ span: span2, chain: 1, index: i });
+  let dnaTheta = 0;
+  let lastCalculatedDistance = 0;
+
+  // 计算destiny-section和summary之间的距离
+  function calculateDNALength() {
+    const destinySection = document.getElementById('destiny-section');
+    const summarySection = document.getElementById('summary');
+    
+    if (!destinySection || !summarySection) {
+      return 214 * GAP; // 返回默认长度
+    }
+    
+    const destinyRect = destinySection.getBoundingClientRect();
+    const summaryRect = summarySection.getBoundingClientRect();
+    
+    // 计算两个卡片中心之间的距离
+    const destinyCenter = destinyRect.top + destinyRect.height / 2;
+    const summaryCenter = summaryRect.top + summaryRect.height / 2;
+    const distance = Math.abs(summaryCenter - destinyCenter)*0.93; // 乘以0.9以适应视觉效果
+    
+    return Math.max(300, distance); // 最小距离300px
   }
 
-  let dnaTheta = 0;
+  // 初始化或更新DNA字符
+  function initializeDNAChars() {
+    const targetLength = calculateDNALength();
+    const newNUM = Math.max(20, Math.floor(targetLength / GAP));
+    
+    // 只有当长度变化较大时才重新创建字符
+    if (Math.abs(newNUM - NUM) > 5) {
+      NUM = newNUM;
+      
+      // 清空现有字符
+      dnaScene.innerHTML = '';
+      dnaChars = [];
+      
+      // 创建新的DNA字符
+      for (let i = 0; i < NUM; i++) {
+        let span1 = document.createElement("span");
+        let span2 = document.createElement("span");
+        span1.className = "dna-char purple";
+        span2.className = "dna-char";
+        span1.textContent = bases[Math.floor(Math.random() * 4)];
+        span2.textContent = Math.random() > 0.5 ? "0" : "1";
+        dnaScene.appendChild(span1);
+        dnaScene.appendChild(span2);
+        dnaChars.push({ span: span1, chain: 0, index: i });
+        dnaChars.push({ span: span2, chain: 1, index: i });
+      }
+    }
+  }
 
   function animateDNA() {
     dnaTheta += SPEED;
+    
+    // 定期检查并更新DNA长度
+    if (Math.floor(dnaTheta * 100) % 60 === 0) { // 每60帧检查一次
+      initializeDNAChars();
+    }
+    
+    // 计算无缝循环的参数
+    const deltaAngle = (2 * Math.PI * TURNS) / NUM; // 每个字符的角度间隔
+    const offset = (dnaTheta * 100) % (NUM * GAP); // 像素偏移，用于循环
+    const cycleHeight = NUM * GAP;
 
     dnaChars.forEach(({ span, chain, index }) => {
-      let angle = dnaTheta + index * 0.3;
-      let phase = chain === 0 ? 0 : Math.PI;
-      let x = AMP * Math.sin(angle + phase);
-      let z = AMP * Math.cos(angle + phase);
-      let y = index * GAP;
+      // 使用周期化角度计算，确保首尾无缝连接
+      const adjustedIndex = index - offset / GAP;
+      const angle = deltaAngle * adjustedIndex;
+      const phase = chain === 0 ? 0 : Math.PI;
+      
+      // 3D螺旋坐标
+      const x = AMP * Math.sin(angle + phase);
+      const z = AMP * Math.cos(angle + phase);
+      const y = index * GAP;
 
-      let cycleHeight = NUM * GAP;
-      let adjustedY = ((y - dnaTheta * 100) % cycleHeight + cycleHeight) % cycleHeight;
+      // 循环Y坐标，确保连续性
+      const adjustedY = ((y - offset) % cycleHeight + cycleHeight) % cycleHeight;
 
-      let scale = 1 + z / 500;
-      let opacity = 0.3 + (z + AMP) / (2 * AMP);
+      // 3D视觉效果
+      const scale = 1 + z / 500;
+      const opacity = 0.3 + (z + AMP) / (2 * AMP);
 
       span.style.transform = `translateX(${x}px) translateY(${adjustedY}px) translateZ(${z}px) scale(${scale})`;
       span.style.opacity = opacity.toFixed(2);
 
+      // 随机更新字符内容
       if (Math.random() < 0.01) {
         if (chain === 0) {
           span.textContent = bases[Math.floor(Math.random() * 4)];
@@ -1112,7 +1204,14 @@
     requestAnimationFrame(animateDNA);
   }
 
+  // 初始化DNA字符并开始动画
+  initializeDNAChars();
   animateDNA();
+  
+  // 监听窗口大小变化，重新计算DNA长度
+  window.addEventListener('resize', () => {
+    setTimeout(initializeDNAChars, 100);
+  });
   
   // 创建星空背景
   function createStarfield() {

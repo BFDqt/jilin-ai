@@ -173,9 +173,17 @@
   --text-primary: #f1f5f9;
   --text-secondary: #cbd5e1;
   --text-muted: #64748b;
+  --text-color: #f1f5f9;
   --border-color: #475569;
   --card-bg: #1e293b;
   --nav-bg: rgba(15, 23, 42, 0.95);
+  --primary-color: #8b5cf6;
+  --hover-bg: rgba(139, 92, 246, 0.1);
+  --header-bg: rgba(30, 41, 59, 0.8);
+  --tag-bg: rgba(139, 92, 246, 0.2);
+  --scrollbar-track: #334155;
+  --scrollbar-thumb: #64748b;
+  --scrollbar-thumb-hover: #94a3b8;
 }
 
 [data-theme="light"] {
@@ -185,9 +193,17 @@
   --text-primary: #1f2937;
   --text-secondary: #374151;
   --text-muted: #64748b;
+  --text-color: #1f2937;
   --border-color: #e2e8f0;
   --card-bg: #ffffff;
   --nav-bg: rgba(255, 255, 255, 0.95);
+  --primary-color: #4f46e5;
+  --hover-bg: rgba(79, 70, 229, 0.05);
+  --header-bg: rgba(248, 250, 252, 0.9);
+  --tag-bg: rgba(79, 70, 229, 0.1);
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
 }
 
 /* Dark theme application */
@@ -522,6 +538,7 @@
   margin-top: 0.5em;
 }
 .loading-title {
+  font-family: "Montserrat", sans-serif;
   font-size: 2.2em;
   font-weight: bold;
   letter-spacing: 0.18em;
@@ -601,10 +618,11 @@ body {
 .navbar-brand {
   display: flex;
   font-size: 2.5rem;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 0.05em;
   cursor: pointer;
   gap: 0;
+  font-family: 'Montserrat', sans-serif !important;
 }
 
 .brand-letter {
@@ -641,7 +659,18 @@ body {
   100% { transform: translateY(0) scale(1); }
 }
 
-/* Navigation link styles now defined in navbar-nav section below */
+/* Navigation link styles */
+.navbar-nav .nav-link {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.navbar-nav .dropdown-toggle {
+  font-family: 'Montserrat', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+}
 
 /* 切换按钮样式 */
 .navbar-toggler {
@@ -689,7 +718,9 @@ body {
 .navbar .dropdown-item {
     color: rgba(229, 231, 235, 0.9) !important;
     padding: 12px 20px;
-    font-weight: 500;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif !important;
+    letter-spacing: 0.3px !important;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -1235,4 +1266,331 @@ a, button, [role="button"], .btn, .cursor-pointer, .navbar-brand, .back-to-top-b
 
 .bg-info {
   background-color: rgba(96, 165, 250, 0.2) !important;
+}
+
+/* ========== 站内搜索样式 ========== */
+
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.9);
+  padding: 6px 40px 6px 12px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: rgba(79, 70, 229, 0.6);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.15);
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+}
+
+.search-btn {
+  position: absolute;
+  right: 24px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  z-index: 2;
+  font-size: 12px;
+}
+
+.search-btn:hover {
+  color: #4f46e5;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.search-clear-btn {
+  position: absolute;
+  right: 6px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 3px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  font-size: 10px;
+  z-index: 3;
+}
+
+.search-clear-btn:hover {
+  color: #ef4444;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 搜索结果下拉框 */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 2000;
+  margin-top: 8px;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+
+.search-results-header {
+  padding: 12px 16px 8px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--header-bg);
+  border-radius: 12px 12px 0 0;
+}
+
+.search-results-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-results-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-result-item {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover,
+.search-result-item:focus {
+  background: var(--hover-bg);
+}
+
+.search-result-link {
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.search-result-link:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.search-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.search-result-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--primary-color);
+}
+
+.search-result-section {
+  font-size: 11px;
+  color: var(--text-muted);
+  background: var(--tag-bg);
+  padding: 2px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.search-result-snippet {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.search-result-snippet mark {
+  background: rgba(79, 70, 229, 0.2);
+  color: var(--primary-color);
+  padding: 1px 2px;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+.search-no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.search-no-results p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.search-loading {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+/* 深色主题适配 */
+[data-theme="light"] .search-input {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+}
+
+/* --- Hover-to-expand search overlay in navbar --- */
+nav.navbar .container {
+  position: relative; /* positioning context for absolute overlay */
+}
+
+/* Collapsed (icon-only) */
+.navbar .site-search {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  z-index: 1100; /* above theme switcher */
+  transition: width 0.25s ease;
+}
+
+.navbar .site-search .search-container {
+  width: 100%;
+}
+
+.navbar .site-search .search-input {
+  width: 0;
+  opacity: 0;
+  padding-left: 0;
+  padding-right: 0;
+  pointer-events: none;
+}
+
+.navbar .site-search .search-btn {
+  right: 6px; /* icon closer when collapsed */
+}
+
+/* Expanded on hover or focus within */
+.navbar .site-search:hover,
+.navbar .site-search:focus-within {
+  width: 420px; /* expanded width */
+}
+
+.navbar .site-search:hover .search-input,
+.navbar .site-search:focus-within .search-input {
+  width: 100%;
+  opacity: 1;
+  pointer-events: auto;
+  padding: 6px 40px 6px 12px; /* restore padding */
+}
+
+.navbar .site-search:hover .search-btn,
+.navbar .site-search:focus-within .search-btn {
+  right: 24px; /* restore default position */
+}
+
+/* Hide/disable theme switcher while expanded so search can overlay its space */
+.navbar .site-search:hover ~ .theme-switcher,
+.navbar .site-search:focus-within ~ .theme-switcher {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Ensure dropdown results align with expanded width */
+.navbar .site-search .search-results {
+  min-width: 100%;
+}
+
+[data-theme="light"] .search-input:focus {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: #4f46e5;
+}
+
+[data-theme="light"] .search-input::placeholder {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="light"] .search-btn {
+  color: rgba(0, 0, 0, 0.7);
+}
+
+[data-theme="light"] .search-btn:hover {
+  color: #4f46e5;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .search-clear-btn {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="light"] .search-clear-btn:hover {
+  color: #ef4444;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 */
+@media (max-width: 991.98px) {
+  .site-search {
+    display: none !important;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .site-search {
+    min-width: 250px;
+  }
+  
+  .search-input {
+    font-size: 13px;
+    padding: 6px 40px 6px 14px;
+  }
+}
+
+/* 自定义滚动条 */
+.search-results::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-results::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
 }

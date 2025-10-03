@@ -1,9 +1,11 @@
-image: python:3.6
+image: python:3.11
 
 pages:
   stage: build
   script:
     - pip install --no-cache-dir -r dependencies.txt
+    - pip install beautifulsoup4
+    - python scripts/build_search_index.py
     - FLASK_APP=app.py flask freeze
   artifacts:
     paths:

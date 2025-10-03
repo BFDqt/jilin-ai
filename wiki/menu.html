@@ -34,9 +34,9 @@
             Project
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-project">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='description') }}">Description</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='engineering') }}">Engineering</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='contribution') }}">Contribution</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='description') }}"><i class="fas fa-file-alt me-2"></i>Description</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='engineering') }}"><i class="fas fa-cogs me-2"></i>Engineering</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='contribution') }}"><i class="fas fa-hands-helping me-2"></i>Contribution</a></li>
           </ul>
         </li>
 
@@ -46,10 +46,10 @@
             Dry Lab
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-dry-lab">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='notebook') }}">Notebook</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='experiments') }}">Experiments</a></li>
-            <li><a class="dropdown-item" href="#">Hardware</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='safety-and-security') }}">Safety and Security</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='notebook') }}"><i class="fas fa-book me-2"></i>Notebook</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='experiments') }}"><i class="fas fa-flask me-2"></i>Experiments</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='hardware') }}"><i class="fas fa-microchip me-2"></i>Hardware</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='safety-and-security') }}"><i class="fas fa-shield-alt me-2"></i>Safety and Security</a></li>
           </ul>
         </li>
 
@@ -59,10 +59,10 @@
             Model
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-model">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}">Software</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='model') }}">Model</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='results') }}">Results</a></li>
-            <li><a class="dropdown-item" href="#">Proof-of-concept</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}"><i class="fas fa-code me-2"></i>Software</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='model') }}"><i class="fas fa-brain me-2"></i>Model</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='results') }}"><i class="fas fa-chart-line me-2"></i>Results</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='proof-of-concept') }}"><i class="fas fa-lightbulb me-2"></i>Proof-of-concept</a></li>
           </ul>
         </li>
 
@@ -72,12 +72,12 @@
             Human Practice
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-human-practice">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}">Human Practice</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}">Education</a></li>
-            <li><a class="dropdown-item" href="#">Collaboration</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='inclusivity') }}">Inclusivity</a></li>
-            <li><a class="dropdown-item" href="#">Entrepreneurship</a></li>
-            <li><a class="dropdown-item" href="#">Sustainability</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}"><i class="fas fa-users me-2"></i>Human Practice</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}"><i class="fas fa-graduation-cap me-2"></i>Education</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='collaboration') }}"><i class="fas fa-handshake me-2"></i>Collaboration</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='inclusivity') }}"><i class="fas fa-heart me-2"></i>Inclusivity</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='entrepreneurship') }}"><i class="fas fa-rocket me-2"></i>Entrepreneurship</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainability') }}"><i class="fas fa-leaf me-2"></i>Sustainability</a></li>
           </ul>
         </li>
 
@@ -87,17 +87,59 @@
             Team
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-team">
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='members') }}">Members</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='attributions') }}">Attributions</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='members') }}"><i class="fas fa-user-friends me-2"></i>Members</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='attributions') }}"><i class="fas fa-certificate me-2"></i>Attributions</a></li>
           </ul>
         </li>
 
         <!-- MEDALS / AWARDS -->
         <li class="nav-item">
-          <a class="nav-link" href="#">Awards</a>
+          <a class="nav-link" href="{{ url_for('pages', page='awards') }}">Awards</a>
         </li>
 
       </ul>
+      
+      <!-- Site Search -->
+      <div class="site-search d-none d-lg-flex me-3">
+        <div class="search-container">
+     <input type="text" 
+       id="site-search-input" 
+       class="form-control search-input" 
+       placeholder="Search the site..." 
+       aria-label="Search the site"
+       autocomplete="off">
+    <button type="button" 
+      id="site-search-btn" 
+      class="btn search-btn" 
+      aria-label="Execute search"
+      title="Search">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+    <button type="button" 
+      id="search-clear-btn" 
+      class="btn search-clear-btn d-none" 
+      aria-label="Clear search"
+      title="Clear">
+            <i class="fas fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+        <!-- Search Results Dropdown -->
+        <div id="search-results" 
+             class="search-results" 
+             role="listbox" 
+             aria-label="Search results"
+             style="display: none;">
+          <div class="search-results-header">
+            <span class="search-results-count">Search results</span>
+          </div>
+          <ul class="search-results-list" id="search-results-list">
+            <!-- Search results will be populated here -->
+          </ul>
+          <div class="search-no-results d-none">
+            <p>No matching content found</p>
+          </div>
+        </div>
+      </div>
       
       <!-- Theme Switcher -->
       <fieldset class="theme-switcher" role="group" aria-labelledby="theme-switcher-legend">
