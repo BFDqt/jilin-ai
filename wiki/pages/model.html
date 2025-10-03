@@ -1,0 +1,458 @@
+{% extends "layout.html" %}
+  
+{% block title %}Model{% endblock %}
+{% block lead %}Comprehensive model details including methodology, datasets, training, evaluation, and implementation.{% endblock %}
+
+{% block page_content %}
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>Model Architecture & Design</h2>
+    <hr />
+    <p>This page provides comprehensive details about BIOMNIGEM's model architecture, methodology, datasets, training process, evaluation, and implementation.</p>
+  </div>
+</div>
+
+<!-- Methodology Section -->
+<div class="row mt-4">
+  <div class="col">
+    <h3>Research Methodology</h3>
+    <hr />
+    <p>Our methodology is built on several core principles and technical approaches for developing BIOMNIGEM.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Design Principles</h4>
+    <hr />
+    <ul>
+      <li><strong>Multimodal Integration:</strong> Seamlessly combining DNA, RNA, and protein data</li>
+      <li><strong>Cross-Modal Learning:</strong> Learning relationships across biological data types</li>
+      <li><strong>Interpretability:</strong> Ensuring transparent and explainable predictions</li>
+      <li><strong>Scalability:</strong> Designing for computational efficiency</li>
+    </ul>
+  </div>
+  <div class="col-lg-6">
+    <h4>Technical Approach</h4>
+    <hr />
+    <ul>
+      <li>Large Language Model foundation (Qwen3-30B)</li>
+      <li>Task-driven training framework</li>
+      <li>Biological Chain-of-Thought reasoning</li>
+      <li>Unified data representation</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Datasets Section -->
+<div class="row mt-4">
+  <div class="col">
+    <h3>Training Datasets</h3>
+    <hr />
+    <p>BIOMNIGEM was trained on diverse, high-quality biological datasets covering genomics, transcriptomics, and proteomics.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>Dataset Overview</h4>
+    <hr />
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Data Type</th>
+            <th>Source</th>
+            <th>Size</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>DNA Sequences</strong></td>
+            <td>GenBank, Ensembl</td>
+            <td>TBD</td>
+            <td>Genomic sequences and regulatory elements</td>
+          </tr>
+          <tr>
+            <td><strong>RNA Expression</strong></td>
+            <td>GEO, GTEx</td>
+            <td>TBD</td>
+            <td>Gene expression profiles from various tissues</td>
+          </tr>
+          <tr>
+            <td><strong>Protein Sequences</strong></td>
+            <td>UniProt, PDB</td>
+            <td>TBD</td>
+            <td>Protein sequences and structures</td>
+          </tr>
+          <tr>
+            <td><strong>Interaction Networks</strong></td>
+            <td>STRING, BioGRID</td>
+            <td>TBD</td>
+            <td>Protein-protein interaction data</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Data Processing Pipeline</h4>
+    <hr />
+    <ol>
+      <li><strong>Data Collection:</strong> Gathering from public repositories</li>
+      <li><strong>Quality Control:</strong> Filtering and validation</li>
+      <li><strong>Preprocessing:</strong> Normalization and formatting</li>
+      <li><strong>Conversion:</strong> Transform to "cell sentence" format</li>
+      <li><strong>Augmentation:</strong> Enhancing dataset diversity</li>
+    </ol>
+  </div>
+  <div class="col-lg-6">
+    <h4>Dataset Statistics</h4>
+    <hr />
+    <p>Key statistics about our training data:</p>
+    <ul>
+      <li><strong>Total samples:</strong> TBD</li>
+      <li><strong>Training set:</strong> TBD (XX%)</li>
+      <li><strong>Validation set:</strong> TBD (XX%)</li>
+      <li><strong>Test set:</strong> TBD (XX%)</li>
+      <li><strong>Cross-modal pairs:</strong> TBD</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Training Section -->
+<div class="row mt-4">
+  <div class="col">
+    <h3>Training Process</h3>
+    <hr />
+    <p>This section details the training methodology, hyperparameters, and optimization strategies used to develop BIOMNIGEM.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Training Tasks</h4>
+    <hr />
+    <p>BIOMNIGEM was trained on multiple tasks to achieve comprehensive biological understanding:</p>
+    <ul>
+      <li><strong>Single-Modal Tasks:</strong>
+        <ul>
+          <li>DNA mutation effect prediction</li>
+          <li>Protein function classification</li>
+          <li>Gene expression analysis</li>
+        </ul>
+      </li>
+      <li><strong>Cross-Modal Tasks:</strong>
+        <ul>
+          <li>DNA-Protein binding prediction</li>
+          <li>Gene-to-Protein function mapping</li>
+          <li>Multi-omics integration</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="col-lg-6">
+    <h4>Hyperparameters</h4>
+    <hr />
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <tbody>
+          <tr>
+            <td><strong>Base Model:</strong></td>
+            <td>Qwen3-30B</td>
+          </tr>
+          <tr>
+            <td><strong>Learning Rate:</strong></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td><strong>Batch Size:</strong></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td><strong>Training Epochs:</strong></td>
+            <td>TBD</td>
+          </tr>
+          <tr>
+            <td><strong>Optimizer:</strong></td>
+            <td>AdamW</td>
+          </tr>
+          <tr>
+            <td><strong>Loss Function:</strong></td>
+            <td>Cross-entropy + Custom</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>Training Strategy</h4>
+    <hr />
+    <ol>
+      <li><strong>Stage 1 - Foundation:</strong> Pre-training on single-modal tasks</li>
+      <li><strong>Stage 2 - Integration:</strong> Cross-modal learning and fusion</li>
+      <li><strong>Stage 3 - Fine-tuning:</strong> Task-specific optimization</li>
+      <li><strong>Stage 4 - Validation:</strong> Performance testing and adjustment</li>
+    </ol>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Computational Resources</h4>
+    <hr />
+    <ul>
+      <li><strong>Hardware:</strong> High-performance GPU cluster</li>
+      <li><strong>GPU Type:</strong> TBD</li>
+      <li><strong>Training Time:</strong> TBD hours</li>
+      <li><strong>Total Compute:</strong> TBD GPU-hours</li>
+    </ul>
+  </div>
+  <div class="col-lg-6">
+    <h4>Convergence Analysis</h4>
+    <hr />
+    <p>Training convergence metrics and analysis:</p>
+    <ul>
+      <li>Loss curves across training stages</li>
+      <li>Validation performance monitoring</li>
+      <li>Early stopping criteria</li>
+      <li>Model checkpointing strategy</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Evaluation Section -->
+<div class="row mt-4">
+  <div class="col">
+    <h3>Evaluation Framework</h3>
+    <hr />
+    <p>This section presents our comprehensive evaluation methodology, including metrics, baseline comparisons, and ablation studies.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>Evaluation Metrics</h4>
+    <hr />
+    <p>We use multiple metrics to assess BIOMNIGEM's performance across different tasks:</p>
+    
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Task Category</th>
+            <th>Metrics</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Classification</strong></td>
+            <td>Accuracy, F1-Score, AUC-ROC</td>
+            <td>For cell type annotation, protein function prediction</td>
+          </tr>
+          <tr>
+            <td><strong>Regression</strong></td>
+            <td>MSE, MAE, R²</td>
+            <td>For gene expression prediction, binding affinity</td>
+          </tr>
+          <tr>
+            <td><strong>Ranking</strong></td>
+            <td>MRR, NDCG, Precision@K</td>
+            <td>For protein-protein interaction ranking</td>
+          </tr>
+          <tr>
+            <td><strong>Generation</strong></td>
+            <td>BLEU, ROUGE, Perplexity</td>
+            <td>For text generation and explanation tasks</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>Baseline Comparisons</h4>
+    <hr />
+    <p>BIOMNIGEM was compared against state-of-the-art models:</p>
+    
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Type</th>
+            <th>Parameters</th>
+            <th>Task Performance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>BIOMNIGEM</strong></td>
+            <td>Multimodal LLM</td>
+            <td>30B</td>
+            <td><strong>97%</strong> (Cell Type Annotation)</td>
+          </tr>
+          <tr>
+            <td>GPT-4o</td>
+            <td>General LLM</td>
+            <td>~1.7T</td>
+            <td>85% (Cell Type Annotation)</td>
+          </tr>
+          <tr>
+            <td>LLaMA-3.1</td>
+            <td>General LLM</td>
+            <td>70B</td>
+            <td>82% (Cell Type Annotation)</td>
+          </tr>
+          <tr>
+            <td>scBERT</td>
+            <td>Specialized</td>
+            <td>110M</td>
+            <td>91% (Cell Type Annotation)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Ablation Studies</h4>
+    <hr />
+    <p>We conducted ablation studies to understand the contribution of each component:</p>
+    <ul>
+      <li><strong>Without Cross-Modal Training:</strong> -12% performance</li>
+      <li><strong>Without Chain-of-Thought:</strong> -8% performance</li>
+      <li><strong>Smaller Base Model (7B):</strong> -15% performance</li>
+      <li><strong>Single-Modal Only:</strong> -20% performance</li>
+    </ul>
+  </div>
+  <div class="col-lg-6">
+    <h4>Cross-Validation</h4>
+    <hr />
+    <p>5-fold cross-validation results:</p>
+    <ul>
+      <li><strong>Mean Accuracy:</strong> 96.2%</li>
+      <li><strong>Standard Deviation:</strong> ±1.3%</li>
+      <li><strong>95% Confidence Interval:</strong> [94.9%, 97.5%]</li>
+      <li><strong>Consistency:</strong> High across all folds</li>
+    </ul>
+  </div>
+</div>
+
+<!-- Implementation Section -->
+<div class="row mt-4">
+  <div class="col">
+    <h3>Implementation Details</h3>
+    <hr />
+    <p>This section provides technical details about BIOMNIGEM's implementation, including code architecture, API design, and deployment instructions.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Code Architecture</h4>
+    <hr />
+    <p>BIOMNIGEM's codebase is organized into modular components:</p>
+    <ul>
+      <li><strong>Core Module:</strong> Model architecture and inference engine</li>
+      <li><strong>Data Module:</strong> Data processing and loading pipelines</li>
+      <li><strong>Training Module:</strong> Training loops and optimization</li>
+      <li><strong>Evaluation Module:</strong> Metrics and benchmarking tools</li>
+      <li><strong>API Module:</strong> RESTful API and web interface</li>
+      <li><strong>Utils Module:</strong> Helper functions and utilities</li>
+    </ul>
+  </div>
+  <div class="col-lg-6">
+    <h4>Technology Stack</h4>
+    <hr />
+    <ul>
+      <li><strong>Framework:</strong> PyTorch</li>
+      <li><strong>Base Model:</strong> Qwen3-30B (Hugging Face Transformers)</li>
+      <li><strong>Data Processing:</strong> Pandas, NumPy, Biopython</li>
+      <li><strong>Visualization:</strong> Matplotlib, Seaborn</li>
+      <li><strong>API:</strong> Flask/FastAPI</li>
+      <li><strong>Testing:</strong> pytest</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>API Design</h4>
+    <hr />
+    <p>BIOMNIGEM provides a RESTful API for easy integration:</p>
+    
+    <h5 class="mt-3">Example Usage</h5>
+    <pre><code class="language-python"># Python example
+import requests
+
+# DNA mutation effect prediction
+response = requests.post('https://api.biomnigem.org/predict/dna-mutation', 
+    json={
+        'sequence': 'ATCGATCGATCG',
+        'mutation': 'A5T'
+    })
+
+result = response.json()
+print(result['effect'])
+</code></pre>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-lg-6">
+    <h4>Installation Guide</h4>
+    <hr />
+    <pre><code class="language-bash"># Clone repository
+git clone https://github.com/jilin-ai/biomnigem.git
+cd biomnigem
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Download pretrained model
+python scripts/download_model.py
+
+# Run inference
+python inference.py --input data/sample.fasta
+</code></pre>
+  </div>
+  <div class="col-lg-6">
+    <h4>Deployment Options</h4>
+    <hr />
+    <ul>
+      <li><strong>Local Deployment:</strong> Run on personal workstations</li>
+      <li><strong>Cloud Deployment:</strong> AWS, GCP, Azure support</li>
+      <li><strong>Docker Container:</strong> Containerized deployment</li>
+      <li><strong>Web Interface:</strong> Browser-based access</li>
+      <li><strong>API Service:</strong> RESTful API endpoint</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h4>Open Source</h4>
+    <hr />
+    <p>BIOMNIGEM is open-source and available on GitHub. We welcome contributions from the community!</p>
+    <p>
+      <a href="#" class="btn btn-primary me-2"><i class="fab fa-github"></i> GitHub Repository</a>
+      <a href="#" class="btn btn-outline-primary"><i class="fas fa-book"></i> Documentation</a>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

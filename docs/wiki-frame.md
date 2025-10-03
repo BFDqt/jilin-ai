@@ -3,7 +3,7 @@
 ## 页面组织结构
 
 ```
-jilin-ai Wiki (22 pages)
+jilin-ai Wiki (19 pages)
 │
 ├── 🏠 Home
 │   └── home.html
@@ -19,13 +19,10 @@ jilin-ai Wiki (22 pages)
 │   ├── experiments.html         # 实验设计与验证
 │   └── safety-and-security.html # 安全与安全性
 │
-├── 🤖 Model (6 pages)
+├── 🤖 Model (3 pages)
 │   ├── overview.html           # 模型总览
-│   ├── methodology.html        # 方法论
-│   ├── datasets.html           # 数据集
-│   ├── training.html           # 训练过程
-│   ├── results.html            # 结果展示
-│   └── implementation.html     # 实现细节
+│   ├── model.html              # 模型详情（包含方法论、数据集、训练、评估、实现）
+│   └── results.html            # 结果展示
 │
 ├── 🌍 Human Practice (6 pages)
 │   ├── human-practices.html    # 人类实践

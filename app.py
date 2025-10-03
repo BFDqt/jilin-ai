@@ -29,7 +29,14 @@ def home():
 
 @app.route('/<page>')
 def pages(page):
-    return render_template(str(Path('pages')) + '/' + page.lower() + '.html')
+    try:
+        return render_template(str(Path('pages')) + '/' + page.lower() + '.html')
+    except:
+        return render_template('pages/home.html'), 404
+
+@app.errorhandler(404)
+def not_found(error):
+    return render_template('pages/home.html'), 404
 
 # This is the main entry point. When you run this script, it starts the web server on port 8080.
 if __name__ == "__main__":
