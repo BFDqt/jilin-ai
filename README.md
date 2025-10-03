@@ -51,16 +51,26 @@ The static assets are in the `static` directory. The layout and templates are in
 To work locally with this project, follow the steps below:
 
 #### Install
+
+`pip`
+
 ```bash
 git clone https://gitlab.igem.org/2025/jilin-ai.git
 cd jilin-ai
-python3 -m venv venv
-. venv/bin/activate # on Linux, MacOS; or
-. venv\Scripts\activate # on Windows
-pip install -r dependencies.txt
+pip install -e .
 ```
+`uv`
 
+```bash
+git clone https://gitlab.igem.org/2025/jilin-ai.git
+cd jilin-ai
+uv sync
+```
 #### Execute
+
 ```bash
 python app.py
+
+# for uv
+uv run app.py
 ```

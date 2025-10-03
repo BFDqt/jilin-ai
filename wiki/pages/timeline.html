@@ -1,0 +1,136 @@
+{% extends "layout.html" %}
+  
+{% block title %}Timeline{% endblock %}
+{% block lead %}Project timeline and development milestones for BIOMNIGEM.{% endblock %}
+
+{% block page_content %}
+
+<div class="row mt-4">
+  <div class="col">
+    <h2>Project Timeline</h2>
+    <hr />
+    <p>This page documents our project's development timeline, key milestones, and progress throughout the iGEM 2025 competition.</p>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Development Phases</h3>
+    <hr />
+    
+    <div class="timeline">
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 1: Planning & Design (Jan - Feb 2025)</h4>
+        <ul>
+          <li>Project conceptualization</li>
+          <li>Team formation and role assignment</li>
+          <li>Initial literature review</li>
+          <li>Architecture design</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 2: Data Collection & Preparation (Mar - Apr 2025)</h4>
+        <ul>
+          <li>Dataset identification and acquisition</li>
+          <li>Data preprocessing pipeline development</li>
+          <li>Quality control and validation</li>
+          <li>Training/validation/test split</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 3: Model Development (May - Jun 2025)</h4>
+        <ul>
+          <li>Base model selection and setup</li>
+          <li>Training task design</li>
+          <li>Initial training experiments</li>
+          <li>Hyperparameter optimization</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 4: Training & Optimization (Jul - Aug 2025)</h4>
+        <ul>
+          <li>Full-scale model training</li>
+          <li>Performance monitoring and adjustment</li>
+          <li>Cross-validation testing</li>
+          <li>Model refinement</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 5: Evaluation & Testing (Sep 2025)</h4>
+        <ul>
+          <li>Comprehensive benchmarking</li>
+          <li>Baseline comparisons</li>
+          <li>Ablation studies</li>
+          <li>Error analysis</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item mb-4">
+        <h4><i class="fas fa-calendar-alt"></i> Phase 6: Documentation & Presentation (Oct 2025)</h4>
+        <ul>
+          <li>Wiki development</li>
+          <li>Code documentation</li>
+          <li>Presentation preparation</li>
+          <li>Final submission</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col">
+    <h3>Key Milestones</h3>
+    <hr />
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Milestone</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jan 15, 2025</td>
+            <td>Project Kickoff</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>Mar 1, 2025</td>
+            <td>Dataset Collection Complete</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>May 15, 2025</td>
+            <td>Initial Model Prototype</td>
+            <td><span class="badge bg-success">Completed</span></td>
+          </tr>
+          <tr>
+            <td>Aug 1, 2025</td>
+            <td>Full Model Training Complete</td>
+            <td><span class="badge bg-warning">In Progress</span></td>
+          </tr>
+          <tr>
+            <td>Sep 15, 2025</td>
+            <td>Evaluation & Benchmarking</td>
+            <td><span class="badge bg-secondary">Planned</span></td>
+          </tr>
+          <tr>
+            <td>Oct 10, 2025</td>
+            <td>Wiki Freeze</td>
+            <td><span class="badge bg-secondary">Planned</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+

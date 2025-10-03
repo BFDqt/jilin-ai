@@ -1,0 +1,145 @@
+[project]
+name = "jilin-ai"
+version = "0.1.0"
+description = "BIOMNIGEM - Team Jilin-AI 2025 iGEM Competition Wiki: A multimodal AI framework for biological research"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { text = "CC-BY-4.0" }
+authors = [
+    { name = "Team Jilin-AI", email = "jilin.ai.igem@gmail.com" }
+]
+maintainers = [
+    { name = "Team Jilin-AI", email = "jilin.ai.igem@gmail.com" }
+]
+keywords = [
+    "igem",
+    "synthetic-biology",
+    "wiki",
+    "biomnigem",
+    "multimodal-ai",
+    "computational-biology",
+    "flask",
+    "static-site-generator"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: Flask",
+    "Intended Audience :: Science/Research",
+    "License :: Free For Educational Use",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+    "Topic :: Education",
+]
+
+dependencies = [
+    "flask>=3.1.0",
+    "frozen-flask>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "werkzeug>=3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "black>=24.0.0",
+    "ruff>=0.7.0",
+    "mypy>=1.13.0",
+]
+docs = [
+    "markdown>=3.7.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.urls]
+Homepage = "https://2025.igem.wiki/jilin-ai"
+Documentation = "https://2025.igem.wiki/jilin-ai"
+Repository = "https://gitlab.igem.org/2025/jilin-ai"
+"Bug Tracker" = "https://gitlab.igem.org/2025/jilin-ai/-/issues"
+"iGEM Team Page" = "https://2025.igem.org/team/jilin-ai"
+
+[project.scripts]
+jilin-ai-serve = "app:main"
+jilin-ai-build = "build:build_static_site"
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = []
+
+[tool.setuptools.package-data]
+"*" = ["wiki/**/*", "static/**/*"]
+
+[tool.black]
+line-length = 100
+target-version = ["py313"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+  | public
+  | venv
+)/
+'''
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+exclude = [
+    ".git",
+    ".mypy_cache",
+    ".ruff_cache",
+    ".venv",
+    "venv",
+    "build",
+    "dist",
+    "public",
+]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "C4",  # flake8-comprehensions
+    "UP",  # pyupgrade
+]
+ignore = [
+    "E501",  # line too long, handled by black
+    "B008",  # do not perform function calls in argument defaults
+    "C901",  # too complex
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --cov=. --cov-report=html --cov-report=term-missing"

@@ -150,3 +150,7 @@ cython_debug/
 # Project specific
 public/
 dist/
+
+
+uv.lock
+.venv
