@@ -21,6 +21,11 @@
     <!-- Google Fonts for narrative style -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+    <!-- HXTII CSS for Markdown Rendering -->
+    <link href="{{ url_for('static', filename = 'HXTII/css/HXTII.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'HXTII/css/common.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename = 'HXTII/css/bamboo.css') }}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename = 'style.css') }}" rel="stylesheet">
 
@@ -90,6 +95,8 @@
         <!-- Main Content -->
         <main class="text-content col-lg-10 col-md-9 d-flex flex-column align-items-start" id="main-content" role="main">
           <article class="content-section">
+            <!-- HXTII Markdown Render Container -->
+            <div id="HXT"></div>
             {% block page_content %}{% endblock %}
           </article>
         </main>
@@ -100,14 +107,23 @@
   <!-- Footer: MUST mention license AND have a link to team wiki's repository on gitlab.igem.org -->
   {% include 'footer.html' %}
 
+  <!-- jQuery (required for HXTII) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <!-- Bootstrap Bundle with Popper -->
   <script src="{{ url_for('static', filename = 'bootstrap.bundle.min.js') }}"></script>
+  
   <!-- Table of Contents Script -->
   <script src="{{ url_for('static', filename = 'table-of-contents.js') }}"></script>
+  
   <!-- Theme Toggle Script -->
   <script src="{{ url_for('static', filename = 'theme-toggle.js') }}"></script>
+  
   <!-- Site Search Script -->
   <script src="{{ url_for('static', filename = 'site-search.js') }}"></script>
+  
+  <!-- HXTII Library for Markdown Rendering -->
+  <script type="text/javascript" src="{{ url_for('static', filename = 'HXTII/js/HXTII.js') }}"></script>
 
   <!-- Back to Top Button -->
   <button id="back-to-top" 
@@ -144,6 +160,120 @@
     </div>
     <span class="visually-hidden">点击返回页面顶部</span>
   </button>
+  
+  <script>
+    // Back to Top Button Logic
+    window.addEventListener('DOMContentLoaded', function () {
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        // 检测页面滚动
+        window.addEventListener('scroll', function () {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                document.body.classList.add('scrolled');
+            } else {
+                document.body.classList.remove('scrolled');
+            }
+        });
+
+        // 点击按钮回到页面顶部
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.body.scrollTop = 0; // 对于 Safari
+                document.documentElement.scrollTop = 0; // 对于 Chrome, Firefox, IE 和 Opera
+            });
+        }
+    });
+  </script>
+
+  {% if self.title() != "Home" %}
+  <!-- HXTII Markdown Rendering for Content Pages -->
+  <script>
+    (function() {
+      // Only initialize HXTII if not on Home page
+      var hxtDom = document.getElementById('HXT');
+      if (!hxtDom) return;
+
+      // Check if page has markdown content to render
+      if (typeof hxtiiContent !== 'undefined' || typeof markdownString !== 'undefined') {
+        
+        if (!window.hasOwnProperty("hxtIsMarkdown") && typeof hxtiiContent !== 'undefined') {
+          // Render as HXTII content
+          var hxt = new HXTII({
+            el: hxtDom,
+            content: hxtiiContent,
+            renderComplete: function() {
+              updateTableOfContents();
+            }
+          });
+        } else if (typeof markdownString !== 'undefined') {
+          // Render as Markdown
+          var hxt = new HXTII({
+            el: hxtDom,
+            markdownContent: markdownString,
+            markdown: true,
+            renderComplete: function() {
+              updateTableOfContents();
+            }
+          });
+        }
+
+        // Update TOC from HXTII rendered content
+        function updateTableOfContents() {
+          if (!window.hxt || !window.hxt.titleGradeList) return;
+          
+          var tocEl = document.getElementById("toc-content");
+          if (!tocEl) return;
+
+          // Clear loading message
+          tocEl.innerHTML = '';
+
+          // Build TOC from HXTII title list (level 1 headings)
+          for (var i = 0; i < window.hxt.titleGradeList.length; i++) {
+            if (window.hxt.titleGradeList[i] == 1) {
+              var item = document.createElement("div");
+              item.className = "toc-item";
+              
+              var link = document.createElement("a");
+              link.href = "#";
+              link.className = "toc-link";
+              
+              // Extract text from rendered content
+              var textContent = '';
+              if (window.hxt.childList[i].children && 
+                  window.hxt.childList[i].children[0] && 
+                  window.hxt.childList[i].children[0].children && 
+                  window.hxt.childList[i].children[0].children[0]) {
+                textContent = window.hxt.childList[i].children[0].children[0].innerText;
+              } else {
+                textContent = window.hxt.childList[i].innerText || 'Section ' + (i + 1);
+              }
+              link.textContent = textContent;
+              
+              // Add click handler with closure to capture correct index
+              (function(index) {
+                link.addEventListener("click", function(e) {
+                  e.preventDefault();
+                  var targetElement = window.hxt.childList[index];
+                  if (targetElement) {
+                    var offsetTop = targetElement.offsetTop - 120; // Account for fixed header
+                    window.scrollTo({
+                      top: offsetTop,
+                      behavior: 'smooth'
+                    });
+                  }
+                });
+              })(i);
+              
+              item.appendChild(link);
+              tocEl.appendChild(item);
+            }
+          }
+        }
+      }
+    })();
+  </script>
+  {% endif %}
 
 </body>
 </html>

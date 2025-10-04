@@ -49,7 +49,6 @@
             <li><a class="dropdown-item" href="{{ url_for('pages', page='software') }}"><i class="fas fa-code me-2"></i>Software</a></li>
             <li><a class="dropdown-item" href="{{ url_for('pages', page='timeline') }}"><i class="fas fa-calendar-alt me-2"></i>Timeline</a></li>
             <li><a class="dropdown-item" href="{{ url_for('pages', page='experiments') }}"><i class="fas fa-flask me-2"></i>Experiments</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='safety-and-security') }}"><i class="fas fa-shield-alt me-2"></i>Safety and Security</a></li>
           </ul>
         </li>
 
@@ -72,11 +71,12 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbar-human-practice">
             <li><a class="dropdown-item" href="{{ url_for('pages', page='human-practices') }}"><i class="fas fa-users me-2"></i>Human Practice</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}"><i class="fas fa-graduation-cap me-2"></i>Education</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='safety-and-security') }}"><i class="fas fa-shield-alt me-2"></i>Safety and Security</a></li>
+            <!-- <li><a class="dropdown-item" href="{{ url_for('pages', page='education') }}"><i class="fas fa-graduation-cap me-2"></i>Education</a></li>
             <li><a class="dropdown-item" href="{{ url_for('pages', page='collaboration') }}"><i class="fas fa-handshake me-2"></i>Collaboration</a></li>
             <li><a class="dropdown-item" href="{{ url_for('pages', page='inclusivity') }}"><i class="fas fa-heart me-2"></i>Inclusivity</a></li>
             <li><a class="dropdown-item" href="{{ url_for('pages', page='entrepreneurship') }}"><i class="fas fa-rocket me-2"></i>Entrepreneurship</a></li>
-            <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainability') }}"><i class="fas fa-leaf me-2"></i>Sustainability</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('pages', page='sustainability') }}"><i class="fas fa-leaf me-2"></i>Sustainability</a></li> -->
           </ul>
         </li>
 
@@ -98,30 +98,7 @@
 
       </ul>
       
-      <!-- Site Search -->
-      <div class="site-search d-none d-lg-flex me-3">
-        <div class="search-container">
-     <input type="text" 
-       id="site-search-input" 
-       class="form-control search-input" 
-       placeholder="Search the site..." 
-       aria-label="Search the site"
-       autocomplete="off">
-    <button type="button" 
-      id="site-search-btn" 
-      class="btn search-btn" 
-      aria-label="Execute search"
-      title="Search">
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </button>
-    <button type="button" 
-      id="search-clear-btn" 
-      class="btn search-clear-btn d-none" 
-      aria-label="Clear search"
-      title="Clear">
-            <i class="fas fa-times" aria-hidden="true"></i>
-          </button>
-        </div>
+
         <!-- Search Results Dropdown -->
         <div id="search-results" 
              class="search-results" 

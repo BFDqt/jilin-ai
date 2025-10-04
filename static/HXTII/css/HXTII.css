@@ -1,0 +1,342 @@
+@charset "UTF-8";
+
+/**
+ * 
+ * @authors LuanHaixin (2534910946@qq.com)
+ * @date    2022-02-10 20:22:47
+ * @version $Id$
+ */
+.hxtii-outerblock {
+    width: 100%;
+    min-height: 60px;
+  
+    position: relative;
+    margin: 18px auto;
+    /*cursor: pointer;*/
+    display: flex;
+    flex-direction: row;
+    transform-origin: 50% 50%;
+    left: 0px;
+    transition: 0.5s;
+}
+
+.hxtii-outerblock:first-child {
+    margin-top:0px;
+}
+
+.hxtii-innerblock-c {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    transform-origin: 50% 50%;
+
+}
+
+.hxtii-innerblock {
+    position: relative;
+    height: 100%;
+    width: auto;
+    flex: 1;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        overflow: hidden;
+
+}
+
+.hxtii-innerblock-cc {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    transform-origin: 50% 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.hxtii-innerblock-text-c {
+    display: table;
+    position: relative;
+    width: calc(100% - 17px);
+    min-height: 40px;
+}
+
+.hxtii-innerblock-text {
+    position: relative;
+    text-align: left;
+    word-break: break-word;
+    display: table-cell;
+    min-height: 30px;
+    line-height: 175%;
+    hyphens: auto;
+}
+
+
+.hxtii-innerblock-text font{
+
+ line-height: normal;
+} 
+
+.hxtii-innerblock-media,.hxtii-innerblock-advanced{
+    width: calc(100% - 15px);
+    height: 98%;
+
+    position: relative;
+    display: flex;
+}
+
+
+
+
+
+.hxtii-innerblock-media-rc ,.hxtii-innerblock-advanced-rc {
+    width: 100%;
+}
+
+.hxtii-innerblock-image img {
+    width: 100%;
+    padding-bottom: 2px;
+    padding-top: 2px;
+
+}
+
+
+.hxtii-innerblock-text a{
+  padding: 2px 5px;
+    margin: 0px 4px;
+    color: #222;
+    border: 2px solid #c9c9c9;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+
+
+
+.stage-just-left .hxtii-innerblock-media ,
+.stage-just-left .hxtii-innerblock-advanced {
+
+    justify-content: flex-start;
+
+}
+
+.stage-just-center .hxtii-innerblock-media ,
+.stage-just-center .hxtii-innerblock-advanced {
+
+    justify-content: center;
+
+}
+
+.stage-just-right .hxtii-innerblock-media ,
+.stage-just-right .hxtii-innerblock-advanced {
+
+    justify-content: flex-end;
+
+}
+
+
+
+.stage-align-top .hxtii-innerblock-adjust {
+
+    align-self: flex-start;
+
+}
+
+.stage-align-center .hxtii-innerblock-adjust {
+
+    align-self: center;
+
+
+}
+
+.stage-align-bottom .hxtii-innerblock-adjust {
+
+    align-self: flex-end;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.stage-just-left .textbox {
+
+    text-align: left;
+
+
+}
+
+.stage-just-center .textbox {
+
+    text-align: center;
+
+
+}
+
+.stage-just-right .textbox {
+
+    text-align: right;
+
+
+}
+
+.stage-just-justify .textbox {
+
+    text-align: justify;
+
+
+}
+
+.stage-align-top .textbox {
+
+    vertical-align: top;
+
+}
+
+.stage-align-center .textbox {
+
+    vertical-align: middle;
+
+
+}
+
+.stage-align-bottom .textbox {
+
+    vertical-align: bottom;
+
+}
+
+
+#hxt-stage-c .code-show,
+#hxt-stage-c .hxt-formula-formula-cont{
+    position: relative;
+}
+
+
+.hxtii-outerblock .code-show,
+.hxtii-outerblock .hxt-formula-formula-cont{
+    position: relative;
+
+}
+
+
+.hxtii-outerblock.outBlockT0 {
+       font-size: 20px;
+}
+
+.hxtii-outerblock.outBlockT1 {
+   font-size: 30px;
+    text-indent: 0px;
+    color: #009688ff;
+    font-weight: bold;
+}
+
+.hxtii-outerblock.outBlockW1 {
+    font-size: 17px;
+    line-height: 150%;
+}
+
+.hxtii-outerblock.outBlockT2 {
+    font-size: 23px;
+    text-indent: 0px;
+    color: #222;
+    font-weight: bold;
+}
+
+.hxtii-outerblock.outBlockW2 {
+    font-size: 17px;
+    
+    padding-left:0px;
+}
+
+.hxtii-outerblock.outBlockT3 {
+    font-size: 20px;
+    text-indent: 0px;
+    color: #222;
+}
+
+.hxtii-outerblock.outBlockW3 {
+    font-size: 16px;
+}
+
+.hxtii-outerblock .code-show{
+    line-height: 150%;
+    
+}
+
+.hxt-html {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.hxt-html table {
+    position: relative;
+    justify-content: center;
+    border: 1px solid black;
+    width: 97%;
+    font-size: 17px;
+}
+
+.hxt-html table tr:first-child{
+    background-color: #009688ff;
+color: #FFF;
+}
+
+.hxt-html tr {
+    height: 35px;
+    text-align: center;
+}
+
+.hxt-html a {
+    text-decoration: none;
+    padding: 2px 14px;
+    margin: 0px 3px;
+    color: #222;
+    border: 2px solid #dddddd;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.hxt-html td {
+    border: 1px solid #000;
+}
+/*#hxt-stage-c .outBlockT4 {
+    left: 245px;
+}
+
+#hxt-stage-c .outBlockW4 {
+    left: 280px;
+}
+*/
+
+/*#hxt-stage-c .outBlockT4 {
+    left: 245px;
+}
+
+#hxt-stage-c .outBlockW4 {
+    left: 280px;
+}
+*/
