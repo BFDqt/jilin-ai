@@ -1,0 +1,419 @@
+/* ========== 神经网络加载动画 ========== */
+#loading-page.neural-loading-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 0.8s ease-out;
+}
+
+#loading-page.neural-loading-page.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loader-container {
+  width: 360px;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.loader-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.neural-loading-page .node {
+  stroke: #2563eb;
+  stroke-width: 2;
+  fill: #f8fafc;
+  filter: drop-shadow(0 0 4px rgba(37, 99, 235, 0.3));
+  transition: fill 0.3s, filter 0.3s;
+}
+
+.neural-loading-page .node.active {
+  fill: url(#grad);
+  filter: drop-shadow(0 0 16px rgba(139, 92, 246, 0.6));
+}
+
+.neural-loading-page .link {
+  stroke: #cbd5e1;
+  stroke-width: 2.5;
+  transition: stroke 0.3s, filter 0.3s;
+}
+
+.neural-loading-page .link.active {
+  stroke: url(#grad);
+  filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.5));
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.5em;
+}
+
+.loading-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.2em;
+  font-weight: bold;
+  letter-spacing: 0.18em;
+  background: linear-gradient(90deg, #2563eb, #3b82f6, #8b5cf6, #7c3aed, #2563eb 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  opacity: 0;
+  animation: titleFadeIn 1.2s 0.2s forwards, titleGradientFlow 3s 1.4s infinite;
+}
+
+.loading-subtitle {
+  color: #64748b;
+  font-size: 1em;
+  margin-top: 0.5em;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  animation: subtitleFadeIn 1.2s 0.8s forwards;
+}
+
+/* 深色主题加载页面 */
+[data-theme="dark"] #loading-page.neural-loading-page {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* ========== 加载动画关键帧 ========== */
+@keyframes titleFadeIn {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes titleGradientFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+@keyframes subtitleFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== 英雄区域动画 ========== */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes particleFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-20px) rotate(360deg); }
+}
+
+@keyframes titleGlow {
+  0% { text-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1); }
+  100% { 
+    text-shadow: 
+      0 2px 4px rgba(0,0,0,0.1), 
+      0 8px 16px rgba(0,0,0,0.1),
+      0 0 30px rgba(255,255,255,0.3);
+  }
+}
+
+@keyframes underlineExpand {
+  0% { width: 0; }
+  100% { width: 120px; }
+}
+
+@keyframes scrollBounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0) rotate(45deg); }
+  40% { transform: translateX(-50%) translateY(10px) rotate(45deg); }
+  60% { transform: translateX(-50%) translateY(5px) rotate(45deg); }
+}
+
+/* ========== 合作伙伴Logo滚动动画 ========== */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ========== 品牌字母跳动动画 ========== */
+@keyframes letter-jump {
+  0%   { transform: translateY(0) scale(1); }
+  30%  { transform: translateY(-12px) scale(1.15); }
+  60%  { transform: translateY(0) scale(1); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* ========== 品牌流光动画 ========== */
+@keyframes brand-glow-move {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* ========== 过渡和变换效果 ========== */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-in-out;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.slide-in-down {
+  animation: slideInDown 0.6s ease-out;
+}
+
+.bounce-in {
+  animation: bounceIn 0.8s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.rotate-in {
+  animation: rotateIn 0.6s ease-out;
+}
+
+/* ========== 通用动画关键帧 ========== */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes slideInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInDown {
+  from { 
+    opacity: 0; 
+    transform: translateY(-30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.8); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1); 
+  }
+}
+
+@keyframes rotateIn {
+  from { 
+    opacity: 0; 
+    transform: rotate(-180deg) scale(0.8); 
+  }
+  to { 
+    opacity: 1; 
+    transform: rotate(0deg) scale(1); 
+  }
+}
+
+/* ========== 脉冲和呼吸效果 ========== */
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.breathing {
+  animation: breathing 3s ease-in-out infinite;
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes breathing {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px currentColor;
+  }
+  to {
+    text-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+/* ========== 悬停效果动画 ========== */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+.hover-rotate {
+  transition: transform 0.3s ease;
+}
+
+.hover-rotate:hover {
+  transform: rotate(5deg);
+}
+
+.hover-blur {
+  transition: filter 0.3s ease;
+}
+
+.hover-blur:hover {
+  filter: blur(2px);
+}
+
+/* ========== 加载状态动画 ========== */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+.loading-dots::after {
+  content: '';
+  animation: loadingDots 1.5s infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes loadingDots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60%, 100% {
+    content: '...';
+  }
+}
+
+/* ========== 响应式动画优化 ========== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .loading-title {
+    font-size: 1.8em;
+  }
+  
+  .loading-subtitle {
+    font-size: 0.9em;
+  }
+  
+  .loader-container {
+    width: 280px;
+    height: 180px;
+  }
+}
+
+/* ========== 暗色主题神经网络动画覆盖 ========== */
+/* 这些样式必须在文件最后以确保正确覆盖基础样式 */
+[data-theme="dark"] .neural-loading-page .node {
+  stroke: #3b82f6;
+  fill: #1e293b;
+}
+
+[data-theme="dark"] .neural-loading-page .node.active {
+  fill: url(#grad-dark);
+  filter: drop-shadow(0 0 16px rgba(6, 182, 212, 0.6));
+}
+
+[data-theme="dark"] .neural-loading-page .link {
+  stroke: #475569;
+}
+
+[data-theme="dark"] .neural-loading-page .link.active {
+  stroke: url(#grad-dark);
+  filter: drop-shadow(0 0 8px rgba(8, 145, 178, 0.5));
+}

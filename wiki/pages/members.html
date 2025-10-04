@@ -1,35 +1,1110 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block title %}Meet Our Team{% endblock %} {%
+block lead %}The brilliant minds behind BIOMNIGEM - a fusion of expertise,
+passion, and innovation.{% endblock %} {% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/members.css') }}" />
+{% endblock %} {% block members_content %}
 
-{% block title %}Meet Our Team{% endblock %}
-{% block lead %}This page is dedicated to introducing the individuals who made our iGEM project possible. Here, you'll find information about our team members, instructors, and advisors.{% endblock %}
+<!-- Neural network background animated hero section -->
+<div class="neural-hero-section">
+  <div class="neural-background" id="neural-bg"></div>
+  <div class="floating-dna" id="floating-dna"></div>
 
-{% block page_content %}
-
-<div class="row">
-  <div class="col-8">
-    <h2>What Should this Page Contain?</h2>
-    <hr />
-    <ul>
-      <li>Include pictures of your teammates, don't forget instructors and advisors!</li>
-      <li>You can add a small biography or a few words from each team member, to tell us what you like, and what motivated you to participate in iGEM.</li>
-      <li>Present your lab environment, your institution, and perhaps glimpses of your city or region.</li>
-      <li>Showcase the expertise and guidance of your instructors and advisors.</li>
-    </ul>
-    <div class="bd-callout bd-callout-info">
-      <strong>Important:</strong> Remember that your wiki will be archived and remain publicly accessible. Be mindful of the personal information you share. Avoid posting sensitive details. Be sure everyone shown in pictures agree to them being shown.
+  <div class="hero-content-overlay">
+    <div
+      class="hero-title-container"
+      data-aos="fade-up"
+      data-aos-duration="1000"
+    >
+      <h1 class="neural-title">Meet Our Team</h1>
+      <p class="neural-subtitle">
+        Where AI meets Biology, Innovation meets Passion
+      </p>
     </div>
-  </div>
-  <div class="col-4">
-    <h2>Inspirations</h2>
-    <hr />
-    <ul>
-      <li><a href="https://2024.igem.wiki/waseda-tokyo/members">2024 Waseda-Tokyo</a></li>
-      <li><a href="https://2024.igem.wiki/aachen/team">2024 Aachen</a></li>
-      <li><a href="https://2024.igem.wiki/patras/team">2024 Patras</a></li>
-      <li><a href="https://2024.igem.wiki/dtu-denmark/team">2024 DTU-Denmark</a></li>
-      <li><a href="https://2024.igem.wiki/fudan/team">2024 Fudan</a></li>
-    </ul>
+
+    <div class="scroll-indicator">
+      <svg
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M19 14l-7 7m0 0l-7-7m7 7V3"
+        ></path>
+      </svg>
+    </div>
   </div>
 </div>
 
+<!-- Team sections with animated cards -->
+<div class="team-sections-container">
+  <!-- Computational Biology Team -->
+  <section class="team-section" data-aos="fade-up" data-aos-duration="800">
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-brain section-icon"></i>
+        Model Team
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-wzq.webp"
+                alt="AI Lead"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-robot"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Zhongqi Wang</h3>
+              <p class="member-role">Dry Lab</p>
+              <div class="member-tags">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">AI & Synthetic Biology</span>
+                <span class="tag">Computer Science</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="GitHub Profile" aria-label="Visit GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Zhongqi Wang</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The School of Computer Science and Technology of Jilin
+                    University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hello everyone, I'm Wang Zhongqi from the School of Computer
+                    Science and Technology, Jilin University. It's a great honor
+                    to meet all the outstanding classmates and explore the
+                    technological field where AI empowers synthetic biology
+                    together, jointly unlocking more possibilities for
+                    interdisciplinary innovation.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Innovate fearlessly, code relentlessly."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-wyz.webp"
+                alt="Yizhou Wang"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-code"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Yizhou Wang</h3>
+              <p class="member-role">Dry Lab</p>
+              <div class="member-tags">
+                <span class="tag">Deep Learning</span>
+                <span class="tag">AI & Synthetic Biology</span>
+                <span class="tag">Computer Science</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="GitHub Profile" aria-label="Visit GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" title="Twitter Profile" aria-label="Visit Twitter profile"><i class="fab fa-twitter"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Yizhou Wang</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The School of Computer Science and Technology of Jilin
+                    University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hello everyone, I'm Wang Yizhou from the School of Computer
+                    Science and Technology, Jilin University. I feel extremely
+                    honored to participate in the iGEM competition—especially to
+                    explore more possibilities for the integration of AI and
+                    synthetic biology during this event.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "A thousand sails pass by the sunken ship; ten thousand
+                    trees spring up beyond the withered tree."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-lcm.webp"
+                alt="Congming Li"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-code"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Congming Li</h3>
+              <p class="member-role">Wiki</p>
+              <div class="member-tags">
+                <span class="tag">Web Development</span>
+                <span class="tag">BIOMNIGEM</span>
+                <span class="tag">Computer Science</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="GitHub Profile" aria-label="Visit GitHub profile"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link" title="Twitter Profile" aria-label="Visit Twitter profile"><i class="fab fa-twitter"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Congming Li</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The School of Computer Science and Technology of Jilin
+                    University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hello, this is Congming Li from the School of Computer
+                    Science and Technology at Jilin University. I am thrilled to
+                    be part of the Jilin-AI iGEM team and would devote the best
+                    of myself to our BIOMNIGEM language model. I am also glad to
+                    be in charge of our entire wiki page.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "In thrust we trust."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Biological Research Team -->
+  <section
+    class="team-section"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="200"
+  >
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-dna section-icon"></i>
+        Biological Research Team
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-sjc2.webp"
+                alt="Team Leader"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-user-tie"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Jicheng Sun</h3>
+              <p class="member-role">Team Leader</p>
+              <div class="member-tags">
+                <span class="tag">Team Leadership</span>
+                <span class="tag">Synthetic Biology</span>
+                <span class="tag">Medical Sciences</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" title="LinkedIn Profile" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Jicheng Sun</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Third Bethune Hospital of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Fascinated by the myriad wonders of synthetic biology, I
+                    hope to find friends in similar research fields in the iGEM
+                    competition and work together to make the heart of synthetic
+                    biology (iGEM) burst more powerfully.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Interest and determination in career are the keys to
+                    success."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-yly.webp"
+                alt="Life Sciences"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Liuyu Yang</h3>
+              <p class="member-role">Human Practice</p>
+              <div class="member-tags">
+                <span class="tag">Life Sciences</span>
+                <span class="tag">Human Practice</span>
+                <span class="tag">Sustainability</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" title="LinkedIn Profile" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Liuyu Yang</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Life Sciences College of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Thrilled to be stepping into the world of synthetic biology,
+                    I am eager to meet and learn from all the brilliant minds at
+                    iGEM. I hope that through our collective effort and
+                    creativity, we can use the building blocks of life to
+                    compose a brighter, more sustainable future for all.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Forever Curious, Always Learning."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Human Practice Team -->
+  <section
+    class="team-section"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="300"
+  >
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-users section-icon"></i>
+        Human Practice Team
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-wfry.webp"
+                alt="Human Practice"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Fangruyue Wang</h3>
+              <p class="member-role">Human Practice</p>
+              <div class="member-tags">
+                <span class="tag">Human Practice</span>
+                <span class="tag">Medical Sciences</span>
+                <span class="tag">Community Outreach</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" title="LinkedIn Profile" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Fangruyue Wang</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Third Bethune Hospital of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hi guys! It's such a pleasure to have the opportunity to
+                    communicate with talented iGEMers all over the world, and I
+                    would really love to learn more through this precious
+                    experience and our mutual sharing.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Strive not to be a success, but rather to be of value."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-jyt.webp"
+                alt="Human Practice"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-stethoscope"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Yutong Jiang</h3>
+              <p class="member-role">Human Practice</p>
+              <div class="member-tags">
+                <span class="tag">Clinical Medicine</span>
+                <span class="tag">Human Practice</span>
+                <span class="tag">Medical Research</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" title="LinkedIn Profile" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Yutong Jiang</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Second Norman Bethune Hospital of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hi, I'm Jiang Yutong, majoring in clinical medicine. I hope
+                    to conduct in-depth exploration in the field of synthetic
+                    biology through iGEM, and look forward to collaborating with
+                    more like-minded partners to promote the progress of
+                    science.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Observe extensively yet take selectively, accumulate richly
+                    yet release sparingly."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="300">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-cyy.webp"
+                alt="Human Practice"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-pencil-alt"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Yingyi Chen</h3>
+              <p class="member-role">Human Practice</p>
+              <div class="member-tags">
+                <span class="tag">Art & Design</span>
+                <span class="tag">Human Practice</span>
+                <span class="tag">Creative Communication</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="mailto:3413005541@qq.com" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+                <a href="#" class="social-link" title="LinkedIn Profile" aria-label="Visit LinkedIn profile"><i class="fab fa-linkedin"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Yingyi Chen</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Art College of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Hi, I'm Yingyi Chen and it is my great honor to get exposed
+                    to synthetic biology through iGEM. Let's explore this
+                    amazing domain together!
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Breaking boundaries, building the future with code."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Design Team -->
+  <section
+    class="team-section"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="350"
+  >
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-paint-brush section-icon"></i>
+        Design Team
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      <div class="member-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-gjc.webp"
+                alt="Design Lead"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-palette"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Jiachen Gu</h3>
+              <p class="member-role">Design</p>
+              <div class="member-tags">
+                <span class="tag">Visual Design</span>
+                <span class="tag">User Experience</span>
+                <span class="tag">Creative Arts</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Portfolio" aria-label="View portfolio"><i class="fas fa-briefcase"></i></a>
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Jiachen Gu</h3>
+                <div class="member-description-section">
+                  <p class="member-description">
+                    The Art College of Jilin University
+                  </p>
+                </div>
+                <div class="member-description-section">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Art originates from life. As an artist in the team, I hope
+                    to make the interface of our team more beautiful, so that
+                    synthetic biology (iGEM) can be seen by more people and
+                    understood.
+                  </p>
+                </div>
+                <div class="member-quote-section">
+                  <blockquote class="member-quote">
+                    "Next stop, the top."
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Advisors and Mentors -->
+  <section
+    class="team-section"
+    data-aos="fade-up"
+    data-aos-duration="800"
+    data-aos-delay="400"
+  >
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-user-graduate section-icon"></i>
+        Advisors & Mentors
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="team-grid">
+      <div
+        class="member-card mentor-card"
+        data-aos="zoom-in"
+        data-aos-delay="100"
+      >
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-yb.webp"
+                alt="Primary PI"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Prof. Bo Yang</h3>
+              <p class="member-role">Primary PI</p>
+              <div class="member-tags">
+                <span class="tag">Artificial Intelligence</span>
+                <span class="tag">Knowledge Engineering</span>
+                <span class="tag">Graph Neural Networks</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Google Scholar Profile" aria-label="Visit Google Scholar profile"><i class="fab fa-google-scholar"></i></a>
+                <a href="#" class="social-link" title="ORCID Profile" aria-label="Visit ORCID profile"><i class="fab fa-orcid"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Prof. Bo Yang</h3>
+                <p class="member-role">Primary PI</p>
+                <div class="member-description-section scrollable-content">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Bo Yang, a professor and doctoral supervisor, is a national
+                    leading talent. He is currently the dean of the School of
+                    Computer Science and Technology, the School of Software, the
+                    School of Cyber Security, and the director of the Key
+                    Laboratory of Symbolic Computing and Knowledge Engineering
+                    of the Ministry of Education at Jilin University. He
+                    obtained his doctoral degree from the School of Computer
+                    Science at Jilin University in 2003 and has visited and
+                    exchanged at Hong Kong Baptist University, the University of
+                    Warwick in the United Kingdom, the University of Technology
+                    Sydney, and George Mason University. His main research areas
+                    are artificial intelligence and knowledge engineering. His
+                    current research directions include graph machine learning
+                    and graph mining, complex system learning, neural symbolic
+                    systems, intelligent recommender systems, graph neural
+                    networks, graph optimization, and human-machine fusion
+                    systems.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="member-card mentor-card"
+        data-aos="zoom-in"
+        data-aos-delay="200"
+      >
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-zyg.webp"
+                alt="Primary PI"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Prof. Yonggang Zhang</h3>
+              <p class="member-role">Primary PI</p>
+              <div class="member-tags">
+                <span class="tag">Constraint Solving</span>
+                <span class="tag">Knowledge Graph</span>
+                <span class="tag">Learning Reasoning</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Google Scholar Profile" aria-label="Visit Google Scholar profile"><i class="fab fa-google-scholar"></i></a>
+                <a href="#" class="social-link" title="ORCID Profile" aria-label="Visit ORCID profile"><i class="fab fa-orcid"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Prof. Yonggang Zhang</h3>
+                <p class="member-role">Primary PI</p>
+                <div class="member-description-section scrollable-content">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Professor, PhD supervisor, and Vice Dean of the School of
+                    Computer Science and Technology at Jilin University. He is
+                    also the Deputy Director of the Key Laboratory of Symbolic
+                    Computing and Knowledge Engineering at the Ministry of
+                    Education, Deputy Director of the Institute of Computer
+                    Science and Technology, and Executive Vice Dean of the
+                    Huawei Information and Network Technology Academy. He used
+                    to be a Postdoctoral Fellow at the Mathematics Research
+                    Institute of Jilin University, and a Visiting Scholar at the
+                    University of Montpellier in France, the University of
+                    Trento in Italy, and the University of New Brunswick in
+                    Canada. His research interests include constraint solving
+                    and optimization, learning reasoning methods, knowledge
+                    graph, etc.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="member-card mentor-card"
+        data-aos="zoom-in"
+        data-aos-delay="300"
+      >
+        <div class="card-flip-container">
+          <!-- Front Side -->
+          <div class="card-front">
+            <div class="card-bg-animation"></div>
+            <div class="member-avatar">
+              <img
+                src="https://static.igem.wiki/teams/6032/member/member-gfm1.webp"
+                alt="Primary PI"
+              />
+              <div class="avatar-overlay">
+                <i class="fas fa-graduation-cap"></i>
+              </div>
+            </div>
+            <div class="member-info">
+              <h3 class="member-name">Fangming Gu</h3>
+              <p class="member-role">Primary PI</p>
+              <div class="member-tags">
+                <span class="tag">Computer Applications</span>
+                <span class="tag">Natural Language Processing</span>
+                <span class="tag">Machine Vision</span>
+              </div>
+              <!-- <div class="member-social">
+                <a href="#" class="social-link" title="Google Scholar Profile" aria-label="Visit Google Scholar profile"><i class="fab fa-google-scholar"></i></a>
+                <a href="#" class="social-link" title="Email Contact" aria-label="Send email"><i class="fas fa-envelope"></i></a>
+              </div> -->
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-redo-alt"></i>
+              <span>Click to flip</span>
+            </div>
+          </div>
+
+          <!-- Back Side -->
+          <div class="card-back">
+            <div class="card-bg-animation"></div>
+            <div class="card-back-content">
+              <div class="member-back-info">
+                <h3 class="member-name">Prof. Fangming Gu</h3>
+                <p class="member-role">Primary PI</p>
+                <div class="member-description-section scrollable-content">
+                  <h4>Introduction</h4>
+                  <p class="member-description">
+                    Teacher from the Computer Application Technology Teaching
+                    and Research Department. His research focuses on artificial
+                    intelligence, recommender systems, natural language
+                    processing, machine vision, etc. He teaches courses
+                    including Programming Design Comprehensive Course II, Data
+                    Structure, and IOS Mobile Application Development.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="flip-hint">
+              <i class="fas fa-undo-alt"></i>
+              <span>Click</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lab Environment Showcase -->
+  <section class="lab-showcase" data-aos="fade-up" data-aos-duration="1000">
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-building section-icon"></i>
+        Our Research Environment
+      </h2>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="lab-carousel">
+      <div class="carousel-container">
+        <div class="carousel-track" id="lab-carousel-track">
+          <div class="lab-image-container carousel-slide active">
+            <img
+              src="https://via.placeholder.com/600x400/3B82F6/FFFFFF?text=AI+Lab"
+              alt="AI Research Lab"
+              class="lab-image"
+            />
+            <div class="image-overlay">
+              <h3>AI Research Lab</h3>
+              <p>
+                State-of-the-art computing infrastructure for deep learning
+                research
+              </p>
+            </div>
+          </div>
+
+          <div class="lab-image-container carousel-slide">
+            <img
+              src="https://via.placeholder.com/600x400/10B981/FFFFFF?text=Wet+Lab"
+              alt="Wet Laboratory"
+              class="lab-image"
+            />
+            <div class="image-overlay">
+              <h3>Biological Laboratory</h3>
+              <p>Modern wet lab facilities for experimental validation</p>
+            </div>
+          </div>
+
+          <div class="lab-image-container carousel-slide">
+            <img
+              src="https://via.placeholder.com/600x400/8B5CF6/FFFFFF?text=Campus"
+              alt="University Campus"
+              class="lab-image"
+            />
+            <div class="image-overlay">
+              <h3>Jilin University Campus</h3>
+              <p>
+                Our beautiful campus in Changchun, fostering innovation and
+                collaboration
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <button
+          class="carousel-btn prev-btn"
+          id="prev-btn"
+          aria-label="Previous image"
+        >
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button
+          class="carousel-btn next-btn"
+          id="next-btn"
+          aria-label="Next image"
+        >
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Carousel Indicators -->
+      <div class="carousel-indicators">
+        <button
+          class="indicator active"
+          data-slide="0"
+          aria-label="Go to slide 1"
+        ></button>
+        <button
+          class="indicator"
+          data-slide="1"
+          aria-label="Go to slide 2"
+        ></button>
+        <button
+          class="indicator"
+          data-slide="2"
+          aria-label="Go to slide 3"
+        ></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Values -->
+  <section class="team-values" data-aos="fade-up" data-aos-duration="1000">
+    <div class="values-container">
+      <h2 class="values-title">Our Core Values</h2>
+      <div class="values-grid">
+        <div class="value-item" data-aos="flip-left" data-aos-delay="100">
+          <div class="value-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>Innovation</h3>
+          <p>Pushing the boundaries of what's possible in biological AI</p>
+        </div>
+
+        <div class="value-item" data-aos="flip-left" data-aos-delay="200">
+          <div class="value-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Collaboration</h3>
+          <p>Building bridges between disciplines and communities</p>
+        </div>
+
+        <div class="value-item" data-aos="flip-left" data-aos-delay="300">
+          <div class="value-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <h3>Global Impact</h3>
+          <p>Creating solutions that benefit humanity worldwide</p>
+        </div>
+
+        <div class="value-item" data-aos="flip-left" data-aos-delay="400">
+          <div class="value-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>Ethics</h3>
+          <p>Ensuring responsible development and deployment of AI</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- Enhanced background effects -->
+<div class="neural-connections" id="neural-connections"></div>
+<div class="particle-system" id="particle-system"></div>
+<div class="geometric-shapes" id="geometric-shapes"></div>
+<div class="dna-strands" id="dna-strands"></div>
+
+{% endblock %} {% block scripts %}
+<script src="{{ url_for('static', filename='js/members.js') }}"></script>
 {% endblock %}

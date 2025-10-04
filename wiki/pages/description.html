@@ -5,61 +5,7 @@
 
 {% block page_content %}
 
-<div class="row mt-4">
-  <div class="col">
-    <div class="bd-callout bd-callout-info">
-      <h4>Bronze Medal Criterion #1: Wiki</h4>
-      <p>Describe how and why you chose your iGEM project.</p>
-      <hr />
-      <p>Visit the <a href="https://competition.igem.org/judging/medals">Medals page</a> for more information.</p>
-    </div>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col">
-    <h2>The Story of a Fragmented Puzzle</h2>
-    <hr />
-    <p>Imagine trying to understand a grand story by reading only scattered pages from different books. This is the reality for many biologists today. One dataset holds secrets about DNA, another about gene expression, and a third about protein structures. These are all part of the same biological narrative, but they exist in different languages, stored in separate libraries. The tools to analyze them are just as fragmented—specialized, inflexible, and unable to speak to one another.</p>
-    
-    <p>This "data silo" problem creates a massive gap between the questions scientists want to ask and the answers they can get. How does a change in a gene affect a whole network of proteins? How can we design a protein for a specific function based on a cell's current state? Answering these questions requires a holistic view that current AI tools, trained on single data types, simply cannot provide. They can find patterns, but they can't reason. They can predict, but they can't explain. This friction, the "wet lab-dry lab divide," is a major bottleneck slowing down breakthroughs in medicine, agriculture, and bio-engineering.</p>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col">
-    <h2>Introducing BIOMNIGEM: The Unifier</h2>
-    <hr />
-    <p>We envisioned a different future. A future where a single, intelligent system could read all the pages of biology at once, understand their connections, and discuss its findings with the researcher. This vision is <strong>BIOMNIGEM</strong>.</p>
-    
-    <p>BIOMNIGEM is not just another predictive model; it's a <strong>reasoning engine for biology</strong>. We built our framework around a powerful Large Language Model (LLM), teaching it to be fluent in the languages of DNA, RNA, and proteins simultaneously. It is the first biological AI of its kind to be trained with true <strong>cross-modal understanding</strong>, allowing it to learn the fundamental rules that govern how these systems interact.</p>
-    
-    <p>By talking to BIOMNIGEM, a researcher can move seamlessly from a DNA sequence to a 3D protein structure, predict how a cellular environment will react to a new drug, and even generate novel hypotheses. It's more than a tool—it's a collaborative partner, designed to amplify human intuition and accelerate the cycle of scientific discovery. BIOMNIGEM is our answer to the fragmented puzzle, piecing together the full story of life itself.</p>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col-lg-8">
-    <h2>Project Vision</h2>
-    <hr />
-    <ul>
-      <li>Bridge the gap between different biological data types through unified AI analysis</li>
-      <li>Enable true cross-modal understanding of DNA, RNA, and protein interactions</li>
-      <li>Provide an intelligent reasoning engine that can explain its predictions</li>
-      <li>Accelerate the cycle of biological discovery through collaborative AI partnership</li>
-      <li>Make advanced computational biology accessible to researchers without deep AI expertise</li>
-    </ul>
-  </div>
-  <div class="col-lg-4">
-    <h2>Key Features</h2>
-    <hr />
-    <ul>
-      <li><strong>Multimodal Analysis:</strong> Process genomics, transcriptomics, and proteomics data simultaneously</li>
-      <li><strong>Biological Chain-of-Thought:</strong> Transparent reasoning that shows how conclusions are reached</li>
-      <li><strong>Interactive Dialogue:</strong> Natural language conversations with your data</li>
-      <li><strong>Open Source:</strong> Complete framework available for community development</li>
-    </ul>
-  </div>
-</div>
+<!-- Load markdown content for HXTII rendering -->
+<script type="text/javascript" src="{{ url_for('static', filename = 'wiki/description.js') }}"></script>
 
 {% endblock %}

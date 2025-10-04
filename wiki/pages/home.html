@@ -535,6 +535,254 @@
     0%, 100% { opacity: 0.2; }
     50% { opacity: 0.6; }
   }
+  
+  /* ========== Video Showcase Styles ========== */
+  .video-showcase-card {
+    position: relative;
+    background: linear-gradient(135deg, 
+      rgba(30, 41, 59, 0.95) 0%, 
+      rgba(51, 65, 85, 0.9) 50%, 
+      rgba(30, 41, 59, 0.95) 100%);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    box-shadow: 
+      0 25px 80px rgba(139, 92, 246, 0.4),
+      0 0 120px rgba(79, 172, 254, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    padding: 3rem 2rem;
+  }
+  
+  .video-showcase-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, 
+      #4facfe, #00f2fe, #a855f7, #3b82f6, #4facfe);
+    background-size: 400% 400%;
+    border-radius: 1rem;
+    z-index: -1;
+    animation: videoCardGlow 8s ease-in-out infinite;
+  }
+  
+  @keyframes videoCardGlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .video-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.4),
+      0 0 80px rgba(139, 92, 246, 0.3);
+    transform: perspective(1000px) rotateX(5deg);
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .video-container:hover {
+    transform: perspective(1000px) rotateX(0deg);
+    box-shadow: 
+      0 30px 80px rgba(0, 0, 0, 0.5),
+      0 0 120px rgba(139, 92, 246, 0.5);
+  }
+  
+  .video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    background: linear-gradient(135deg, #1e293b, #334155);
+  }
+  
+  .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 16px;
+    z-index: 2;
+  }
+  
+  .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      135deg,
+      rgba(59, 130, 246, 0.1) 0%,
+      rgba(139, 92, 246, 0.1) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+    pointer-events: none;
+  }
+  
+  .video-wrapper:hover .video-overlay {
+    opacity: 0;
+  }
+  
+  .play-button {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.9), rgba(139, 92, 246, 0.9));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+    animation: playButtonPulse 2s infinite;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .play-button:hover {
+    transform: scale(1.1);
+  }
+  
+  @keyframes playButtonPulse {
+    0%, 100% {
+      transform: scale(1);
+      box-shadow: 0 8px 32px rgba(59, 130, 246, 0.4);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 12px 48px rgba(59, 130, 246, 0.6);
+    }
+  }
+  
+  .video-glow-effect {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: radial-gradient(
+      ellipse at center,
+      rgba(79, 172, 254, 0.3) 0%,
+      rgba(139, 92, 246, 0.2) 50%,
+      transparent 70%
+    );
+    border-radius: 30px;
+    z-index: 1;
+    animation: videoGlow 4s ease-in-out infinite alternate;
+  }
+  
+  @keyframes videoGlow {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.02); }
+  }
+  
+  .video-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  
+  .video-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, rgba(79, 172, 254, 0.8), transparent);
+    border-radius: 50%;
+    animation: videoParticleFloat 6s infinite linear;
+  }
+  
+  @keyframes videoParticleFloat {
+    0% {
+      transform: translateY(100%) translateX(0) rotate(0deg);
+      opacity: 0;
+    }
+    10%, 90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-20px) translateX(50px) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  .video-intro-section h2 {
+    background: linear-gradient(135deg, #60a5fa, #c084fc, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: titleShimmer 3s ease-in-out infinite;
+  }
+  
+  @keyframes titleShimmer {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  
+  .video-description-section {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .video-stat {
+    transition: transform 0.3s ease;
+  }
+  
+  .video-stat:hover {
+    transform: translateY(-5px);
+  }
+  
+  .stat-label {
+    color: #e2e8f0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    opacity: 0.9;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .video-showcase-card {
+      padding: 2rem 1rem;
+    }
+    
+    .video-container {
+      margin: 0 1rem;
+      border-radius: 16px;
+    }
+    
+    .play-button {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+    
+    .video-intro-section h2 {
+      font-size: 1.8rem !important;
+    }
+  }
 </style>
 
 <!-- Background decorative elements -->
@@ -574,7 +822,7 @@
   <div id="parallel-stories">
     <div class="story-block left shadow-blue">
       <p>
-        As early as <strong class="text-info">1966</strong>, we built <strong class="text-info">machines</strong> that followed <strong class="text-info">simple rules</strong>, like digital parrots mimicking conversation (<strong class="text-info">ELIZA</strong>). They could <strong class="text-warning">repeat</strong>, but not <strong class="text-warning">comprehend</strong>.
+        As early as <strong class="text-blue">1966</strong>, we built <strong class="text-blue">machines</strong> that followed <strong class="text-blue">simple rules</strong>, like digital parrots mimicking conversation (<strong class="text-blue">ELIZA</strong>). They could <strong class="text-warning">repeat</strong>, but not <strong class="text-warning">comprehend</strong>.
       </p>
     </div>
 
@@ -592,7 +840,7 @@
 
     <div class="story-block left shadow-blue">
       <p>
-        In the <strong class="text-info">1990s</strong>, machines learned to count with <strong class="text-info">n-gram models</strong>, predicting the <strong class="text-warning">next word</strong> based on <strong class="text-info">statistics</strong>. They understood the <strong class="text-info">grammar</strong> of a sentence, but not the <strong class="text-warning">meaning</strong> of the story.
+        In the <strong class="text-blue">1990s</strong>, machines learned to count with <strong class="text-blue">n-gram models</strong>, predicting the <strong class="text-warning">next word</strong> based on <strong class="text-blue">statistics</strong>. They understood the <strong class="text-blue">grammar</strong> of a sentence, but not the <strong class="text-warning">meaning</strong> of the story.
       </p>
     </div>
 
@@ -604,7 +852,7 @@
 
     <div class="story-block left shadow-blue">
       <p>
-        Then, in <strong class="text-purple">2017</strong>, the world was shattered by a five-word sentence: <strong class="text-purple">Attention is all you need</strong>. It was the <strong class="text-purple">revolution</strong> of the <strong class="text-purple">Transformer</strong>, and for the first time, it gave a <strong class="text-purple">machine</strong> the power to <strong class="text-warning">grasp context</strong>, connecting the <strong class="text-purple">beginning</strong> of a story to its <strong class="text-warning">end</strong>.
+        Then, in <strong class="text-blue">2017</strong>, the world was shattered by a five-word sentence: <strong class="text-blue">Attention is all you need</strong>. It was the <strong class="text-blue">revolution</strong> of the <strong class="text-blue">Transformer</strong>, and for the first time, it gave a <strong class="text-blue">machine</strong> the power to <strong class="text-warning">grasp context</strong>, connecting the <strong class="text-blue">beginning</strong> of a story to its <strong class="text-warning">end</strong>.
       </p>
     </div>
 
@@ -644,7 +892,7 @@
 
     <div class="story-block left shadow-blue">
       <p>
-        We had <strong class="text-info">powerful tools</strong> to analyze <strong class="text-info">DNA</strong>. Separate tools for <strong class="text-info">proteins</strong>. And yet more for <strong class="text-info">cell expression profiles</strong>. They were <strong class="text-warning">brilliant</strong>, but <strong class="text-warning">monolingual</strong>. They were isolated in <strong class="text-purple">digital silos</strong>.
+        We had <strong class="text-blue">powerful tools</strong> to analyze <strong class="text-blue">DNA</strong>. Separate tools for <strong class="text-blue">proteins</strong>. And yet more for <strong class="text-blue">cell expression profiles</strong>. They were <strong class="text-warning">brilliant</strong>, but <strong class="text-warning">monolingual</strong>. They were isolated in <strong class="text-blue">digital silos</strong>.
       </p>
     </div>
 
@@ -724,14 +972,14 @@
     <!-- Core philosophy card -->
     <div class="story-block left shadow-blue">
       <p class="mb-0">
-        BIOMNIGEM is not another specialized tool. It is a <strong class="text-info">scientific reasoning engine</strong>, built upon a powerful Large Language Model, designed to understand biology as a <strong class="text-warning">holistic system</strong>.
+        BIOMNIGEM is not another specialized tool. It is a <strong class="text-blue">scientific reasoning engine</strong>, built upon a powerful Large Language Model, designed to understand biology as a <strong class="text-warning">holistic system</strong>.
       </p>
     </div>
 
     <!-- Capability description card -->
     <div class="story-block right shadow-purple">
       <p class="mb-0">
-        It reads the <strong class="text-info">DNA sequence</strong>, understands its effect on <strong class="text-purple">gene expression</strong>, and predicts the final <strong class="text-info">protein structure</strong> and function—all in a single, seamless conversation.
+        It reads the <strong class="text-blue">DNA sequence</strong>, understands its effect on <strong class="text-purple">gene expression</strong>, and predicts the final <strong class="text-blue">protein structure</strong> and function—all in a single, seamless conversation.
       </p>
     </div>
 
@@ -813,9 +1061,63 @@
         </a>
       </div>
     </div>
-
-    <iframe title="Jilin-AI: BIOMNIGEM (2025) - Project Promotion [English]" width="560" height="315" src="https://video.igem.org/w/sJSeoc6caeU5WeSEQd4WtS" allow="fullscreen" sandbox="allow-same-origin allow-scripts allow-popups allow-forms" style="border: 0px;"></iframe>
+    <!-- Video embed card -->
+    <div class="story-block center video-showcase-card">
+      <div class="video-intro-section mb-4">
+        <h2 class="gradient-text fw-bold text-center mb-3" style="font-size: 2.2rem;">
+          <i class="fas fa-play-circle me-3" style="color: #60a5fa;"></i>
+          Watch BIOMNIGEM in Action
+        </h2>
+        <p class="text-center text-secondary mb-4" style="font-size: 1.1rem; opacity: 0.8;">
+          Discover how our revolutionary AI framework is transforming biological research
+        </p>
+      </div>
+      
+      <div class="video-container">
+        <div class="video-wrapper">
+          <iframe 
+            title="Jilin-AI: BIOMNIGEM (2025) - Project Promotion [English]" 
+            src="https://video.igem.org/videos/embed/sJSeoc6caeU5WeSEQd4WtS" 
+            allow="fullscreen" 
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+            loading="lazy">
+          </iframe>
+          <div class="video-overlay">
+            <div class="play-button">
+              <i class="fas fa-play"></i>
+            </div>
+          </div>
+        </div>
+        
+        <div class="video-glow-effect"></div>
+        <div class="video-particles" id="video-particles"></div>
+      </div>
+      
+      <div class="video-description-section mt-4">
+        <div class="row g-3">
+          <div class="col-md-4 text-center">
+            <div class="video-stat">
+              <i class="fas fa-dna mb-2" style="color: #c084fc; font-size: 1.5rem;"></i>
+              <div class="stat-label">Multimodal AI</div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="video-stat">
+              <i class="fas fa-brain mb-2" style="color: #60a5fa; font-size: 1.5rem;"></i>
+              <div class="stat-label">Biological Reasoning</div>
+            </div>
+          </div>
+          <div class="col-md-4 text-center">
+            <div class="video-stat">
+              <i class="fas fa-rocket mb-2" style="color: #10b981; font-size: 1.5rem;"></i>
+              <div class="stat-label">4x Faster Discovery</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </section>
 
 <script>
@@ -1348,11 +1650,115 @@
     });
   }
   
+  // 创建视频粒子效果
+  function createVideoParticles() {
+    const videoParticles = document.getElementById('video-particles');
+    if (!videoParticles) return;
+    
+    const particleCount = 12;
+    
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'video-particle';
+      
+      // 随机位置和动画延迟
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 6 + 's';
+      particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+      
+      // 随机颜色
+      const colors = ['rgba(79, 172, 254, 0.8)', 'rgba(139, 92, 246, 0.8)', 'rgba(16, 185, 129, 0.8)'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+      particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
+      
+      videoParticles.appendChild(particle);
+    }
+    
+    // 定期添加新粒子
+    setInterval(() => {
+      if (videoParticles.children.length < particleCount * 1.5) {
+        const particle = document.createElement('div');
+        particle.className = 'video-particle';
+        
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (4 + Math.random() * 4) + 's';
+        
+        const colors = ['rgba(79, 172, 254, 0.8)', 'rgba(139, 92, 246, 0.8)', 'rgba(16, 185, 129, 0.8)'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        particle.style.background = `radial-gradient(circle, ${color}, transparent)`;
+        
+        videoParticles.appendChild(particle);
+        
+        // 移除旧粒子
+        setTimeout(() => {
+          if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+          }
+        }, 8000);
+      }
+    }, 2000);
+  }
+  
+  // 视频交互效果
+  function initVideoInteractions() {
+    const videoWrapper = document.querySelector('.video-wrapper');
+    const playButton = document.querySelector('.play-button');
+    const iframe = document.querySelector('.video-wrapper iframe');
+    
+    if (playButton && iframe) {
+      playButton.addEventListener('click', () => {
+        // 隐藏播放按钮，显示视频
+        const overlay = document.querySelector('.video-overlay');
+        if (overlay) {
+          overlay.style.opacity = '0';
+        }
+        
+        // 创建点击波纹效果
+        const ripple = document.createElement('div');
+        ripple.style.position = 'absolute';
+        ripple.style.borderRadius = '50%';
+        ripple.style.background = 'rgba(79, 172, 254, 0.6)';
+        ripple.style.transform = 'scale(0)';
+        ripple.style.animation = 'videoRipple 0.8s ease-out';
+        ripple.style.left = '50%';
+        ripple.style.top = '50%';
+        ripple.style.width = '200px';
+        ripple.style.height = '200px';
+        ripple.style.marginLeft = '-100px';
+        ripple.style.marginTop = '-100px';
+        ripple.style.pointerEvents = 'none';
+        ripple.style.zIndex = '4';
+        
+        videoWrapper.appendChild(ripple);
+        
+        setTimeout(() => {
+          if (ripple.parentNode) {
+            ripple.parentNode.removeChild(ripple);
+          }
+        }, 800);
+      });
+    }
+  }
+  
+  // 添加波纹动画样式
+  const videoStyles = document.createElement('style');
+  videoStyles.textContent = `
+    @keyframes videoRipple {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  `;
+  document.head.appendChild(videoStyles);
+
   // 初始化背景效果
   setTimeout(() => {
     createStarfield();
     createFloatingMolecules();
     createNeuralNetwork();
+    createVideoParticles();
+    initVideoInteractions();
   }, 500);
   
   // 顶部intro淡出

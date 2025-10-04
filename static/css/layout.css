@@ -1,0 +1,503 @@
+/* ========== 英雄区域布局 ========== */
+.bg-hero {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  color: #fff;
+  box-shadow: 0 4px 32px 0 rgba(99,102,241,0.10);
+  padding-top: 4rem;
+  margin-top: 0 !important;
+}
+
+/* Light mode hero area */
+[data-theme="light"] .bg-hero {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
+  color: #fff !important;
+}
+
+/* Dark mode hero area */
+[data-theme="dark"] .bg-hero {
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+  color: #f1f5f9 !important;
+}
+
+/* ========== 现代英雄头部 ========== */
+.modern-hero-header {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.hero-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(59, 130, 246, 0.9) 0%, 
+    rgba(139, 92, 246, 0.9) 50%, 
+    rgba(124, 58, 237, 0.9) 100%
+  );
+  background-size: 200% 200%;
+  animation: gradientShift 8s ease-in-out infinite;
+}
+
+.hero-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, rgba(255,255,255,0.08) 1px, transparent 1px);
+  background-size: 100px 100px, 80px 80px, 120px 120px;
+  animation: particleFloat 20s linear infinite;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.hero-title-container {
+  margin-bottom: 2rem;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 
+    0 2px 4px rgba(0,0,0,0.1),
+    0 8px 16px rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-title-underline {
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6 0%, #8b5cf6 100%);
+  margin: 1.5rem auto;
+  border-radius: 2px;
+  animation: underlineExpand 2s ease-out;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.scroll-arrow {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(255,255,255,0.6);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* Dark theme hero support */
+[data-theme="dark"] .hero-gradient {
+  background: linear-gradient(135deg, 
+    rgba(30, 41, 59, 0.95) 0%, 
+    rgba(51, 65, 85, 0.95) 50%, 
+    rgba(71, 85, 105, 0.95) 100%
+  );
+}
+
+[data-theme="dark"] .hero-title {
+  background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .hero-subtitle {
+  color: rgba(241, 245, 249, 0.9);
+}
+
+[data-theme="dark"] .scroll-arrow {
+  border-color: rgba(241, 245, 249, 0.6);
+}
+
+/* ========== 主要内容布局 ========== */
+.text-content {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  align-items: flex-start !important;
+}
+
+.content-section {
+  width: 100%;
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  margin-top: 20px;
+  min-height: 600px;
+  margin-left: 10px;
+  margin-right: 30px;
+}
+
+[data-theme="dark"] .container {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .text-content {
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .content-section {
+  background-color: var(--card-bg) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--border-color);
+}
+
+.content-section h2,
+.content-section h3 {
+  scroll-margin-top: 130px;
+  color: #2c3e50;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.content-section h2 {
+  font-size: 1.8em;
+  border-bottom: 2px solid #4a90e2;
+  padding-bottom: 10px;
+}
+
+.content-section h3 {
+  font-size: 1.4em;
+  color: #34495e;
+}
+
+.content-section p {
+  line-height: 1.7;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.content-section ul,
+.content-section ol {
+  margin-bottom: 20px;
+  padding-left: 30px;
+}
+
+.content-section li {
+  margin-bottom: 8px;
+}
+
+/* ========== TOC 现代悬浮目录样式 ========== */
+.toc-container {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 100px;
+  right: 40px;
+  width: 240px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.1);
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s;
+  z-index: 100;
+  max-height: 70vh;
+  overflow-y: auto;
+  align-self: flex-start;
+}
+
+.toc-container.fade-in {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.toc-container ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.toc-container li {
+  margin: 4px 0;
+  list-style: none;
+}
+
+.toc-container a {
+  display: block;
+  padding: 4px 8px;
+  color: #333;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.3s ease;
+}
+
+.toc-container a:hover {
+  background: #f5f5f5;
+  color: #4a90e2;
+}
+
+.toc-container .active > a,
+.toc-container li.active > a {
+  color: #1976d2;
+  font-weight: bold;
+  border-left: 3px solid #1976d2;
+  background: #f0f7ff;
+}
+
+.toc-container ul ul {
+  margin-left: 18px;
+  border-left: 1px dashed #eee;
+  padding-left: 10px;
+  display: none;
+}
+
+.toc-container li.active > ul {
+  display: block;
+}
+
+.toc-container li ul {
+  padding-left: 20px;
+  margin-top: 5px;
+}
+
+.toc-container li ul li {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+}
+
+.toc-loading {
+  color: #999;
+  font-size: 0.9em;
+}
+
+/* Dark theme TOC */
+[data-theme="dark"] .toc-container {
+  background: var(--card-bg) !important;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .toc-container a {
+  color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .toc-container a:hover {
+  background: var(--bg-tertiary) !important;
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .toc-container .active > a,
+[data-theme="dark"] .toc-container li.active > a {
+  color: #3b82f6 !important;
+  background: rgba(59, 130, 246, 0.1) !important;
+  border-left-color: #3b82f6 !important;
+}
+
+[data-theme="dark"] .toc-container ul ul {
+  border-left-color: var(--border-color) !important;
+}
+
+[data-theme="dark"] .toc-loading {
+  color: var(--text-muted) !important;
+}
+
+/* ========== 页脚样式 ========== */
+footer.bg-dark {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%) !important;
+  background-color: transparent !important; /* 覆盖Bootstrap的bg-dark */
+  color: #fff !important;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  --bs-bg-opacity: 0 !important; /* 禁用Bootstrap的背景透明度 */
+}
+
+footer a {
+  color: #e0e7ff !important;
+  font-weight: bold;
+  text-decoration: none !important;
+  transition: color 0.2s;
+}
+
+footer a:hover {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+}
+
+footer .text-light {
+  color: #e0e7ff !important;
+}
+
+footer .text-white {
+  color: #fff !important;
+}
+
+/* 确保footer的Bootstrap类正确应用 */
+footer.footer {
+  margin-top: 3rem !important;
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+}
+
+footer .container {
+  max-width: 1200px;
+}
+
+footer .row {
+  align-items: flex-start;
+}
+
+footer h2 {
+  color: #fff !important;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+footer hr {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  margin: 2rem 0 1rem 0;
+}
+
+footer .subfoot {
+  color: #3b82f6 !important;
+  text-decoration: underline !important;
+}
+
+footer .subfoot:hover {
+  color: #2563eb !important;
+}
+
+/* ========== 响应式设计 ========== */
+@media (max-width: 768px) {
+  .modern-hero-header {
+    min-height: 50vh;
+  }
+  
+  .hero-content {
+    padding: 2rem 0;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    padding: 0 1rem;
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 1rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .toc-container {
+    right: 10px;
+    width: 180px;
+  }
+}
+
+@media (max-width: 992px) {
+  .toc-container {
+    display: none;
+  }
+  
+  .toc-index {
+    display: block;
+  }
+
+  .text-content {
+    margin-left: 20px;
+  }
+
+  .content-section {
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+
+  .toc-container {
+    margin-right: 2px;
+    padding: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .toc-index {
+    display: none;
+  }
+
+  .text-content {
+    margin-left: 0;
+  }
+
+  .content-section {
+    padding: 15px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .content-section h2 {
+    font-size: 1.5em;
+  }
+
+  .content-section h3 {
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 576px) {
+  .content-section {
+    padding: 15px;
+  }
+
+  .content-section h2 {
+    font-size: 1.3em;
+  }
+
+  .content-section h3 {
+    font-size: 1.1em;
+  }
+}

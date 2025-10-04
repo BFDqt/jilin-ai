@@ -1,46 +1,35 @@
 {% extends "layout.html" %}
 
 {% block title %}Attributions{% endblock %}
-{% block lead %}Accurate attribution is essential in the iGEM Competition. It ensures that the judges can properly assess your team's contributions and recognize the support provided by external collaborators. This page is dedicated to fulfilling the Attributions requirement for judging.{% endblock %}
+{% block lead %}Recognizing every contribution that made BIOMNIGEM possible - from student innovations to collaborative partnerships.{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/attributions.css') }}">
+{% endblock %}
 
 {% block page_content %}
 
-<div class="row mt-4">
-  <div class="col">
-    <div class="bd-callout bd-callout-info">
-      <h4>Bronze Medal Criterion #2</h4>
+
+<!-- Bronze Medal Criterion Card -->
+<!-- <div class="criterion-section" data-aos="zoom-in" data-aos-duration="800">
+  <div class="medal-card bronze-card">
+    <div class="medal-header">
+      <div class="medal-icon">
+        <i class="fas fa-medal"></i>
+      </div>
+      <h3>Bronze Medal Criterion #2</h3>
+    </div>
+    <div class="medal-content">
       <p>Describe what work your team members did and what other people did for your project using the standardized Project Attributions Form.</p>
-      <hr />
-      <p>Visit the <a href="https://competition.igem.org/judging/medals">Medals page</a> for more information.</p>
+      <div class="medal-link">
+        <a href="https://competition.igem.org/judging/medals" target="_blank" rel="noopener noreferrer" class="criterion-link">
+          <i class="fas fa-external-link-alt"></i>
+          Learn more about Medals requirements
+        </a>
+      </div>
     </div>
   </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col">
-    <h2>What Should this Page Contain?</h2>
-    <hr />
-    <ul>
-      <li>The standard navigation menu of your wiki</li>
-      <li>The standard footer of your wiki</li>
-      <li>The embedded iframe containing your standardized team's Project Attribution form.</li>
-      <li>Nothing else</li>
-    </ul>
-  </div>
-</div>
-
-<div class="row mt-4">
-  <div class="col">
-    <h2>Tips for Success</h2>
-    <hr />
-    <p>Teams must use the official Attributions form. This form clearly delineates the work conducted by your team members and the support received from others. Carefully review the instructions and requirements of this deliverable on the <a href="https://competition.igem.org/deliverables/project-attribution">Project Attribution page</a>. Please note:</p>
-    <ul>
-      <li>Teams must use the standard form. Do not create your own form.</li>
-      <li>The standard Attributions Form must be filled out completely, accurately and honestly.</li>
-      <li>For the best results, we recommend teams start filling out the Attributions Form early in the season and updating it often.</li>
-    </ul>
-  </div>
-</div>
+</div> -->
 
 <!--
   ======================================================================
@@ -50,8 +39,12 @@
   WILL BE DISPLAYED ON THIS PAGE. DO NOT REMOVE IT, OTHERWISE YOU RISK OF
   NOT MEETING BRONZE MEDAL CRITERION #2
  -->
-<div class="row mt-4">
-  <script type="text/javascript">
+<div class="official-form-section" data-aos="fade-up" data-aos-duration="800">
+  <div class="form-container">
+    <h2 class="form-title" data-aos="fade-up" data-aos-delay="100">Official Team Attribution Form</h2>
+    <p class="form-description" data-aos="fade-up" data-aos-delay="200">This standardized form details the specific contributions of each team member and collaborator to meet iGEM Bronze Medal requirements.</p>
+    
+      <script type="text/javascript">
     // Listen to size change and update form height
     window.addEventListener("message", function (e) {
       if (e.origin === "https://teams.igem.org") {
@@ -69,7 +62,243 @@
     src="https://teams.igem.org/wiki/6032/attributions">
   >
   </iframe>
+    
+  </div>
 </div>
 <!-- ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ -->
 
+
+<!-- Visual contribution summary -->
+<div class="contribution-summary" data-aos="fade-up" data-aos-duration="800">
+  <div class="summary-container">
+    <h2 class="summary-title" data-aos="fade-up" data-aos-delay="100">Our Collaborative Journey</h2>
+    <div class="contribution-stats">
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stat-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="stat-number">12</div>
+        <div class="stat-label">Team Members</div>
+      </div>
+      
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
+        <div class="stat-icon">
+          <i class="fas fa-handshake"></i>
+        </div>
+        <div class="stat-number">8</div>
+        <div class="stat-label">Collaborators</div>
+      </div>
+      
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="400">
+        <div class="stat-icon">
+          <i class="fas fa-building"></i>
+        </div>
+        <div class="stat-number">5</div>
+        <div class="stat-label">Partner Institutions</div>
+      </div>
+      
+      <div class="stat-item" data-aos="zoom-in" data-aos-delay="500">
+        <div class="stat-icon">
+          <i class="fas fa-clock"></i>
+        </div>
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Hours of Collaboration</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Key contributions highlight -->
+<div class="contributions-highlight" data-aos="fade-up" data-aos-duration="800">
+  <div class="highlight-container">
+    <h2 class="highlight-title" data-aos="fade-up" data-aos-delay="100">Key Contributions Overview</h2>
+    <div class="contributions-grid">
+      <div class="contribution-card" data-aos="slide-up" data-aos-delay="200">
+        <div class="card-header">
+          <i class="fas fa-brain contribution-icon"></i>
+          <h3>Student Innovation</h3>
+        </div>
+        <ul class="contribution-list">
+          <li>Novel multimodal AI architecture design</li>
+          <li>Biological data integration pipeline</li>
+          <li>Cross-modal learning algorithms</li>
+          <li>Web interface and user experience</li>
+        </ul>
+      </div>
+      
+      <div class="contribution-card" data-aos="slide-up" data-aos-delay="300">
+        <div class="card-header">
+          <i class="fas fa-graduation-cap contribution-icon"></i>
+          <h3>Academic Support</h3>
+        </div>
+        <ul class="contribution-list">
+          <li>Research guidance and methodology</li>
+          <li>Laboratory resources and facilities</li>
+          <li>Expert review and validation</li>
+          <li>Publication and dissemination support</li>
+        </ul>
+      </div>
+      
+      <div class="contribution-card" data-aos="slide-up" data-aos-delay="400">
+        <div class="card-header">
+          <i class="fas fa-industry contribution-icon"></i>
+          <h3>Industry Partnership</h3>
+        </div>
+        <ul class="contribution-list">
+          <li>Real-world dataset access</li>
+          <li>Technical infrastructure support</li>
+          <li>Commercial application insights</li>
+          <li>Beta testing and feedback</li>
+        </ul>
+      </div>
+      
+      <div class="contribution-card" data-aos="slide-up" data-aos-delay="500">
+        <div class="card-header">
+          <i class="fas fa-globe contribution-icon"></i>
+          <h3>Community Impact</h3>
+        </div>
+        <ul class="contribution-list">
+          <li>Open-source code contribution</li>
+          <li>Educational outreach programs</li>
+          <li>Public engagement activities</li>
+          <li>Knowledge sharing initiatives</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Service Providers Section -->
+<div class="service-providers" data-aos="fade-up" data-aos-duration="800">
+  <div class="providers-container">
+    <h2 class="providers-title" data-aos="fade-up" data-aos-delay="100">Providers of Bioinformatics and Artificial Intelligence Tool Services</h2>
+    <div class="providers-grid">
+      <div class="provider-card" data-aos="slide-up" data-aos-delay="200">
+        <div class="provider-header">
+          <i class="fas fa-database provider-icon"></i>
+          <h3>Genomic Databases</h3>
+        </div>
+        <div class="provider-content">
+          <div class="provider-item">
+            <h4>GenBank</h4>
+            <p>Maintained by the National Center for Biotechnology Information (NCBI), one of the world's largest nucleic acid sequence databases.</p>
+            <a href="https://www.ncbi.nlm.nih.gov/genbank/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit GenBank
+            </a>
+          </div>
+          <div class="provider-item">
+            <h4>EMBL</h4>
+            <p>Maintained by the European Bioinformatics Institute (EBI), a member of the International Nucleotide Sequence Database Collaboration (INSDC).</p>
+            <a href="https://www.ebi.ac.uk/embl/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit EMBL
+            </a>
+          </div>
+          <div class="provider-item">
+            <h4>DDBJ</h4>
+            <p>Managed by the National Institute of Genetics in Japan, serves as the Asian node of INSDC.</p>
+            <a href="https://www.ddbj.nig.ac.jp/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit DDBJ
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card" data-aos="slide-up" data-aos-delay="300">
+        <div class="provider-header">
+          <i class="fas fa-search provider-icon"></i>
+          <h3>Analysis Tools</h3>
+        </div>
+        <div class="provider-content">
+          <div class="provider-item">
+            <h4>UCSC Genome Browser</h4>
+            <p>A renowned genome browser that provides visualization and download services for genomic data.</p>
+            <a href="https://genome.ucsc.edu/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit UCSC
+            </a>
+          </div>
+          <div class="provider-item">
+            <h4>STRING</h4>
+            <p>A database for searching known and predicted protein-protein interactions.</p>
+            <a href="https://string-db.org/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit STRING
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card" data-aos="slide-up" data-aos-delay="400">
+        <div class="provider-header">
+          <i class="fas fa-cube provider-icon"></i>
+          <h3>Structural Biology</h3>
+        </div>
+        <div class="provider-content">
+          <div class="provider-item">
+            <h4>AlphaFold</h4>
+            <p>Developed by DeepMind, enables high-precision prediction of protein 3D structures and stands as a revolutionary tool in structural biology.</p>
+            <a href="https://www.deepmind.com/alphafold" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit AlphaFold
+            </a>
+          </div>
+          <div class="provider-item">
+            <h4>PDB (Protein Data Bank)</h4>
+            <p>Stores experimentally determined 3D structures of biological macromolecules such as proteins and nucleic acids.</p>
+            <a href="https://www.rcsb.org/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit PDB
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-card" data-aos="slide-up" data-aos-delay="500">
+        <div class="provider-header">
+          <i class="fas fa-robot provider-icon"></i>
+          <h3>AI Services</h3>
+        </div>
+        <div class="provider-content">
+          <div class="provider-item">
+            <h4>ChatGPT</h4>
+            <p>An advanced conversational AI model based on the GPT (Generative Pre-trained Transformer) architecture, developed by OpenAI.</p>
+            <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit ChatGPT
+            </a>
+          </div>
+          <div class="provider-item">
+            <h4>Tongyi Qianwen (Qwen)</h4>
+            <p>A series of large language models (LLMs) and multimodal models developed by teams under Alibaba Group.</p>
+            <a href="https://tongyi.aliyun.com/" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-external-link-alt"></i> Visit Qwen
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Special Thanks Section -->
+<div class="special-thanks" data-aos="fade-up" data-aos-duration="800">
+  <div class="thanks-container">
+    <h2 class="thanks-title" data-aos="fade-up" data-aos-delay="100">Special Acknowledgments</h2>
+    <div class="thanks-content">
+      <div class="thanks-message" data-aos="fade-in" data-aos-delay="200">
+        <p>We extend our heartfelt gratitude to all individuals, institutions, and organizations that made BIOMNIGEM possible. This project represents the collective effort of a diverse community united by the vision of advancing biological research through artificial intelligence.</p>
+      </div>
+      <div class="thanks-logos" data-aos="fade-in" data-aos-delay="300">
+        <div class="logo-item">
+          <img src="https://via.placeholder.com/120x60/3B82F6/FFFFFF?text=JLU" alt="Jilin University" />
+        </div>
+        <div class="logo-item">
+          <img src="https://via.placeholder.com/120x60/10B981/FFFFFF?text=iGEM" alt="iGEM Foundation" />
+        </div>
+        <div class="logo-item">
+          <img src="https://via.placeholder.com/120x60/8B5CF6/FFFFFF?text=Partner" alt="Research Partner" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/attributions.js') }}"></script>
 {% endblock %}

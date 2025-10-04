@@ -1,0 +1,228 @@
+/* ========== 基础设置 ========== */
+
+/* 隐藏滚动条但保持功能 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* ========== 无障碍类 ========== */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.visually-hidden-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: inherit;
+  margin: inherit;
+  overflow: visible;
+  clip: auto;
+  white-space: inherit;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  z-index: 1000;
+  color: white;
+  background: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 0 4px 4px;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ========== CSS 变量定义 ========== */
+[data-theme="light"] {
+  --bg-primary: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%);
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f8fafc;
+  --text-primary: #1f2937;
+  --text-secondary: #374151;
+  --text-muted: #64748b;
+  --text-color: #1f2937;
+  --border-color: #e2e8f0;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --primary-color: #4f46e5;
+  --hover-bg: rgba(79, 70, 229, 0.05);
+  --header-bg: rgba(248, 250, 252, 0.9);
+  --tag-bg: rgba(79, 70, 229, 0.1);
+  --scrollbar-track: #f1f5f9;
+  --scrollbar-thumb: #cbd5e1;
+  --scrollbar-thumb-hover: #94a3b8;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-color: #f1f5f9;
+  --border-color: #475569;
+  --card-bg: #1e293b;
+  --nav-bg: rgba(15, 23, 42, 0.95);
+  --primary-color: #8b5cf6;
+  --hover-bg: rgba(139, 92, 246, 0.1);
+  --header-bg: rgba(30, 41, 59, 0.8);
+  --tag-bg: rgba(139, 92, 246, 0.2);
+  --scrollbar-track: #334155;
+  --scrollbar-thumb: #64748b;
+  --scrollbar-thumb-hover: #94a3b8;
+}
+
+/* ========== 全局样式 ========== */
+body {
+  background: linear-gradient(135deg, #dbeafe 0%, #e0e7ff 100%) fixed;
+  color: #1f2937;
+  cursor: url('cur_dna_32.cur'), auto;
+}
+
+/* 深色主题全局应用 */
+[data-theme="dark"] body {
+  background: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ========== 字体和文本样式 ========== */
+h1, h2, h3, h4, h5, h6 {
+  color: #1f2937;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+[data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3, 
+[data-theme="dark"] h4, [data-theme="dark"] h5, [data-theme="dark"] h6 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .content-section h1,
+[data-theme="dark"] .content-section h2,
+[data-theme="dark"] .content-section h3,
+[data-theme="dark"] .content-section h4,
+[data-theme="dark"] .content-section h5,
+[data-theme="dark"] .content-section h6 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .content-section h2 {
+  border-bottom-color: #3b82f6 !important;
+}
+
+[data-theme="dark"] * h1,
+[data-theme="dark"] * h2,
+[data-theme="dark"] * h3,
+[data-theme="dark"] * h4,
+[data-theme="dark"] * h5,
+[data-theme="dark"] * h6 {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] h1[id],
+[data-theme="dark"] h2[id],
+[data-theme="dark"] h3[id],
+[data-theme="dark"] h4[id],
+[data-theme="dark"] h5[id],
+[data-theme="dark"] h6[id] {
+  color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] p, [data-theme="dark"] li {
+  color: var(--text-secondary);
+}
+
+.lead, .text-muted {
+  color: #6b7280 !important;
+}
+
+.text-white-50 {
+  color: #9ca3af !important;
+}
+
+.text-brand {
+  color: #3b82f6 !important;
+}
+
+.text-secondary { 
+  color: #6b7280 !important; 
+}
+
+.text-accent { 
+  color: #8b5cf6 !important; 
+}
+
+.text-purple {
+  color: #c084fc !important;
+}
+
+.text-blue {
+  color: #60a5fa !important;
+}
+
+.text-warning {
+  color: #fbbf24 !important;
+}
+
+/* ========== 光标样式 ========== */
+a, button, [role="button"], .btn, .cursor-pointer, .navbar-brand, .back-to-top-btn {
+  cursor: url('cur_trna_32.cur'), pointer;
+}
+
+/* ========== 辅助类 ========== */
+.bg-purple {
+  background-color: rgba(192, 132, 252, 0.2) !important;
+}
+
+.bg-info {
+  background-color: rgba(96, 165, 250, 0.2) !important;
+}
+
+/* 间距类已在 components.css 中定义，避免重复 */
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+/* ========== callout 区块渐变边框 ========== */
+.bd-callout {
+  padding: 1.25rem; 
+  margin-top: 1.25rem; 
+  margin-bottom: 1.25rem;
+  border: 1px solid #e0e7ff; 
+  border-left-width: .25rem; 
+  border-radius: .25rem;
+  background: rgba(236, 239, 255, 0.7);
+}
+
+.bd-callout-info { 
+  border-left-color: #3b82f6 
+}
+
+.bd-callout-warning { 
+  border-left-color: #8b5cf6 
+}
+
+.bd-callout-danger { 
+  border-left-color: #9333ea 
+}
