@@ -62,6 +62,41 @@ def build_static_site():
         shutil.copy2(cname_src, cname_dest)
         print("  ✓ Copied CNAME file")
     
+    # Create redirect files for GitHub Pages compatibility
+    print("🔄 Creating redirect files for URLs without .html extension...")
+    redirect_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=./{page}.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        window.location.href = "./{page}.html";
+    </script>
+</head>
+<body>
+    <p>If you are not redirected automatically, <a href="./{page}.html">click here</a>.</p>
+</body>
+</html>'''
+    
+    # Create redirect files for all pages
+    page_names = [
+        'members', 'description', 'awards', 'attributions', 'human-practices',
+        'collaboration', 'contribution', 'education', 'engineering', 
+        'entrepreneurship', 'experiments', 'hardware', 'inclusivity',
+        'model', 'notebook', 'proof-of-concept', 'results', 
+        'safety-and-security', 'software', 'sustainability'
+    ]
+    
+    for page in page_names:
+        html_file = dist_path / f"{page}.html"
+        if html_file.exists():
+            redirect_file = dist_path / page
+            redirect_content = redirect_template.format(page=page)
+            redirect_file.write_text(redirect_content, encoding='utf-8')
+            print(f"  ✓ Created redirect: {page} → {page}.html")
+    
     print("✅ Static site built successfully!")
     print(f"📁 Output directory: {dist_path.absolute()}")
     
