@@ -39,6 +39,29 @@ def build_static_site():
         print("📁 Copying static assets...")
         shutil.copytree(static_src, static_dest, dirs_exist_ok=True)
     
+    # Fix file extensions for GitHub Pages
+    print("🔧 Adding .html extensions for GitHub Pages compatibility...")
+    for file_path in dist_path.iterdir():
+        if file_path.is_file() and not file_path.suffix and file_path.name != 'index':
+            # Read the content
+            content = file_path.read_text(encoding='utf-8')
+            
+            # Create new .html file
+            html_file = file_path.with_suffix('.html')
+            html_file.write_text(content, encoding='utf-8')
+            
+            # Remove original file
+            file_path.unlink()
+            
+            print(f"  ✓ Converted {file_path.name} → {html_file.name}")
+    
+    # Copy CNAME file if it exists in root
+    cname_src = Path('CNAME')
+    if cname_src.exists():
+        cname_dest = dist_path / 'CNAME'
+        shutil.copy2(cname_src, cname_dest)
+        print("  ✓ Copied CNAME file")
+    
     print("✅ Static site built successfully!")
     print(f"📁 Output directory: {dist_path.absolute()}")
     
